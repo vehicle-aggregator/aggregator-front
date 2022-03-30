@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "4c528763-7f18-4d6d-bbe7-e3c5e8c7c4d0"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -27,7 +30,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/custom-theme.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/styles.less"
             ],
             "scripts": []
           },
@@ -71,7 +78,8 @@
               "browserTarget": "vehicle-aggregator:build:production"
             },
             "development": {
-              "browserTarget": "vehicle-aggregator:build:development"
+              "browserTarget": "vehicle-aggregator:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -94,7 +102,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/styles.less"
             ],
             "scripts": []
           }

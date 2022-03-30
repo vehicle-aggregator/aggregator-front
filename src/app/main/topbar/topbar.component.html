@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-custom navbar-dark">
+  <a class="navbar-brand align-items-end" translate>
+    <mat-icon class="logo">directions_bus_filled</mat-icon>
+    My transport
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li *ngFor="let item of menu" class="nav-item active">
+        <a class="nav-link align-items-end" [routerLink]="item.link" translate>
+          <mat-icon class="mr-1">{{item.icon}}</mat-icon>{{item.name}}</a>
+      </li>
+    </ul>
+
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" translate>
+        <mat-icon>translate</mat-icon>
+        Language
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" [class.active]="getCurrentLang() === 'en'" (click)="changeLanguage('en')">
+          <img style="width: 24px" class="mr-2" [src]="getImg('en')"/>
+          English
+        </a>
+        <a class="dropdown-item" [class.active]="getCurrentLang() === 'ru'" (click)="changeLanguage('ru')">
+          <img style="width: 24px" class="mr-2" [src]="getImg('ru')"/>
+          Russian
+        </a>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{userName}}
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <button class="dropdown-item" type="button" translate>
+          <mat-icon class="mr-2">person</mat-icon>
+          My account
+        </button>
+        <button class="dropdown-item" type="button" translate>
+          <mat-icon class="mr-2">business</mat-icon>
+          My company
+        </button>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" translate>
+          <mat-icon class="mr-2">logout</mat-icon>
+          Sign out
+        </a>
+      </div>
+    </div>
+
+  </div>
+</nav>
