@@ -1,0 +1,30 @@
+<form [formGroup]="form" class="row mt-4">
+  <div class="col-12 col-lg-6">
+    <div class="ll-form-row">
+      <label class="ll-form-label">Company name</label>
+      <div class="ll-form-control">
+        <input formControlName="name" type="text" class="ll-input stretch" placeholder="Company name">
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-lg-6">
+    <div class="ll-form-row">
+      <label class="ll-form-label">The regulation of the organization</label>
+      <div class="ll-form-control">
+        <file-loader formControlName="regulation" name="regulation" [showImg]="true"></file-loader>
+      </div>
+    </div>
+    <div class="ll-form-row">
+      <label class="ll-form-label">Transportation permits</label>
+      <div class="ll-form-control">
+        <file-loader formControlName="transportationPermits" name="transportationPermits" [showImg]="true"></file-loader>
+      </div>
+    </div>
+    <div class="ll-form-row">
+      <label class="ll-form-label">Insurance</label>
+      <div class="ll-form-control">
+        <file-loader formControlName="insurance" name="insurance" [showImg]="true"></file-loader>
+      </div>
+    </div>
+  </div>
+</form>

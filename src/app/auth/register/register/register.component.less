@@ -1,0 +1,51 @@
+@import "../../../../globals";
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../../../../assets/img/bus.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.wizard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.line {
+  height: 5px;
+  background-color: @gainsboro-color;
+  flex: 1;
+  &.active {
+    background-color: @primary-color;
+  }
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid @gainsboro-color;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  &.active {
+    border: 5px solid @primary-color;
+  }
+}
+
+.icons {
+  color: @gainsboro-color;
+  &.active {
+    color: @primary-color;
+  }
+}
+
+.ll-form-control {
+  padding-bottom: 10px;
+}

@@ -1,0 +1,30 @@
+<div class="background">
+
+  <div class="white-block" style="max-width: 330px">
+    <form [formGroup]="form" class="ll-form ll-form-big">
+      <p class="h3 text-center mt-0" style="color: black">Welcome back</p>
+      <p>Log in using your email to continue or
+        <label class="register" [routerLink]="'/auth/register'">create new account</label>.
+      </p>
+      <div class="ll-form-row">
+        <label class="ll-form-label">E-mail</label>
+        <div class="ll-form-control">
+          <span class="icon email small"></span>
+          <input type="text" formControlName="email" class="ll-input stretch" placeholder="E-mail">
+        </div>
+      </div>
+      <div class="ll-form-row">
+        <div class="ll-form-between">
+          <label class="ll-form-label">Password</label>
+          <label class="ll-form-label forgot-pass" tabindex="-1">Forgot password?</label>
+        </div>
+        <div class="ll-form-control">
+          <span class="icon key small"></span>
+          <input type="password" formControlName="password" class="ll-input stretch" placeholder="Password">
+        </div>
+      </div>
+      <button type="submit" class="ll-button fill stretch" (click)="submit()">Log in</button>
+    </form>
+  </div>
+
+</div>

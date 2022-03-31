@@ -1,0 +1,70 @@
+<form [formGroup]="form" class="row">
+  <div class="col-12 col-lg-6">
+    <div class="ll-form-row">
+    <label class="ll-form-label">Last name</label>
+    <div class="ll-form-control">
+      <input formControlName="lastname" type="text" class="ll-input stretch" placeholder="Last name">
+    </div>
+  </div>
+
+    <div class="ll-form-row">
+      <label class="ll-form-label">Name</label>
+      <div class="ll-form-control">
+        <input formControlName="name" type="text" class="ll-input stretch" placeholder="Name">
+      </div>
+    </div>
+
+    <div class="ll-form-row">
+      <label class="ll-form-label">Middlename</label>
+      <div class="ll-form-control">
+        <input formControlName="middlename" type="text" class="ll-input stretch" placeholder="Middlename">
+      </div>
+    </div>
+
+    <div class="ll-form-row">
+      <label class="ll-form-label">Birthday</label>
+      <div class="ll-form-control">
+        <input formControlName="birthday" type="text" class="ll-input stretch" placeholder="Birthday">
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-lg-6">
+    <div>
+      <div class="ll-form-row">
+        <label class="ll-form-label">Gender</label>
+        <div class="ll-form-control">
+          <ng-select
+            formControlName="gender"
+            placeholder="Gender"
+            class="stretch"
+            [clearable]="false"
+            [items]="['male', 'female', 'neutral']">
+          </ng-select>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="ll-form-row">
+        <label class="ll-form-label">E-mail</label>
+        <div class="ll-form-control">
+          <input formControlName="email" type="text" class="ll-input stretch" placeholder="E-mail">
+        </div>
+      </div>
+    </div>
+
+    <div class="ll-form-row">
+      <label class="ll-form-label">Password</label>
+      <div class="ll-form-control">
+        <input formControlName="password" type="password" class="ll-input stretch" placeholder="Password">
+      </div>
+    </div>
+
+    <div class="ll-form-row">
+      <label class="ll-form-label">Confirm password</label>
+      <div class="ll-form-control">
+        <input type="password" class="ll-input stretch" placeholder="Confirm password">
+      </div>
+    </div>
+  </div>
+</form>
