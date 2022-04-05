@@ -1,0 +1,15 @@
+<div class="file">
+  <img *ngIf="showImg && imgUrl" class="mb-2" alt="image_field" [src]="imgUrl | safeUrl">
+
+  <div class="d-flex align-items-center flex-wrap">
+    <label class="ll-button outline mb-0 mr-2" [for]="name">
+      <mat-icon>download</mat-icon>
+      Upload image
+    </label>
+    <button *ngIf="imgUrl" (click)="deleteImg()" class="ll-button outline">
+      <mat-icon>delete_outline</mat-icon>
+      Delete</button>
+  </div>
+
+  <input #fileInput type="file" [id]="name" accept="image/x-png,image/jpeg,image/svg+xml" (change)="changeImage($event)">
+</div>
