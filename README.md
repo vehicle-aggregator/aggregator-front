@@ -34,3 +34,17 @@ ng serve --open
 The ng serve command launches the server, watches your files, and rebuilds the app as you make changes to those files.
 
 The --open (or just -o) option automatically opens your browser to http://localhost:4200/.
+
+### Note
+
+If you deploy client and server parts on the same device, use a proxy, find the **src/proxy.conf** file  and check the **target** field:
+
+```sh
+{
+  "/api/v1": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
+```
