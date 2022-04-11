@@ -5,11 +5,13 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileLoaderComponent } from './components/file-loader/file-loader.component';
 import { SafePipe, SafeUrlPipe } from './pipes/safe.pipe';
+import { FormErrorDirective } from './directives/form-error.directive';
 
 @NgModule({
   declarations: [
     SafePipe,
     SafeUrlPipe,
+    FormErrorDirective,
     FileLoaderComponent
   ],
   imports: [
@@ -26,6 +28,7 @@ import { SafePipe, SafeUrlPipe } from './pipes/safe.pipe';
     FormsModule,
     ReactiveFormsModule,
     FileLoaderComponent,
+    FormErrorDirective,
     NgSelectModule,
   ]
 })
