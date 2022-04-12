@@ -1,0 +1,45 @@
+@import "globals";
+
+.white-block {
+  width: 255px;
+}
+.header {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: @black-color;
+  margin-bottom: 24px;
+}
+
+.percent {
+  display: inline-block;
+  background: @whitesmoke-color;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: @gray-color;
+
+  .material-icons {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+
+  &.green {
+    color: @success-color;
+    .material-icons {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &.red {
+    color: @danger-color;
+    .material-icons {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.image {
+  float: right;
+}

@@ -1,7 +1,35 @@
 <div style="width: 70vw;" class="mt-4">
   <a class="h3" style="color: #808080">{{getTranslate('Dashboard')}}</a>
 
-  <div class="white-block mt-4"></div>
+  <div class="statistics">
+    <app-statistic *ngFor="let statistic of statistics" [statistic]="statistic"></app-statistic>
+  </div>
 
-  <div class="white-block mt-4"></div>
+  <div class="white-block mt-4">
+    <div class="chart-block">
+      <ngx-charts-line-chart
+        [legend]="true"
+        legendTitle=""
+        [xAxis]="true"
+        [yAxis]="true"
+        [results]="results"
+        [scheme]="colorScheme"
+      >
+      </ngx-charts-line-chart>
+    </div>
+  </div>
+
+  <div class="white-block mt-4">
+    <div class="chart-block">
+      <ngx-charts-line-chart
+        [legend]="true"
+        legendTitle=""
+        [xAxis]="true"
+        [yAxis]="true"
+        [results]="results"
+        [scheme]="colorScheme"
+      >
+      </ngx-charts-line-chart>
+    </div>
+  </div>
 </div>
