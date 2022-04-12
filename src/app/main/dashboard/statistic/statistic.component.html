@@ -1,0 +1,14 @@
+<div class="white-block">
+  <div class="image">
+    <mat-icon>{{ statistic.icon }}</mat-icon>
+  </div>
+  <div class="header">{{ statistic.name }}</div>
+  <h2 class="mb-2">{{statistic.value}}</h2>
+  <span class="percent"
+        [ngClass]="{'green': statistic.percent > 0, 'red': statistic.percent < 0}">
+    <div class="d-flex align-items-center">
+      <span class="material-icons">east</span>
+      {{abs(statistic.percent)}}%
+    </div>
+  </span>
+</div>
