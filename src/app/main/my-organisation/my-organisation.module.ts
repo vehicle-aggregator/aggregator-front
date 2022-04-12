@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {MyOrganisationComponent} from "./my-organisation/my-organisation.component";
 import {SharedModule} from "../../shared/shared.module"
 import {MyOrganisationRoutingModule} from "./my-organisation-routing.module"
+import {ClipboardModule} from "@angular/cdk/clipboard";
+import {QRCodeModule} from "angular2-qrcode";
 
 @NgModule({
   declarations: [
@@ -10,7 +12,9 @@ import {MyOrganisationRoutingModule} from "./my-organisation-routing.module"
   ],
   imports: [
     SharedModule,
-    MyOrganisationRoutingModule
+    MyOrganisationRoutingModule,
+    ClipboardModule,
+    QRCodeModule
   ]
 })
 export class MyOrganisationModule { }

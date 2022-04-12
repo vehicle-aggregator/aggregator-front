@@ -1,1 +1,40 @@
-<p>my-organisation works!</p>
+<div style="width: 70vw;" class="mt-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <a class="h3" style="color: #808080">{{getTranslate('My company')}}</a>
+
+    <button class="ll-button outline">
+      <mat-icon class="mr-2">edit</mat-icon>
+      Edit
+    </button>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12 col-md-8">
+      <div class="white-block">
+
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mt-3 mt-md-0">
+      <div class="white-block">
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+          <label class="h3">Invitation</label>
+
+          <div class="ll-form-buttons mt-0">
+            <button class="ll-button outline" [cdkCopyToClipboard]="''">
+              <mat-icon class="mr-2">content_copy</mat-icon>
+              Copy
+            </button>
+          </div>
+        </div>
+
+        <div class="wallet-information-item">
+          <label class="ll-form-label mb-4">Please scan the invitation or copy the link if you want to invite new users to your company.</label>
+          <div class="d-flex justify-content-center">
+            <qr-code [value]="''" [size]="200"></qr-code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
