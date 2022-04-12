@@ -5,7 +5,7 @@ import {
   User,
   RegisterCredentials
 } from '../shared/models/auth.model';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
@@ -25,7 +25,11 @@ export class AuthService {
   }
 
   login(credentials: LoginCredentials): Observable<string> {
-    return this.http.post<string>(`${environment.endPoint}/login`, credentials).pipe(
+    const options = {
+      observe: "response" as 'body', // to display the full response & as 'body' for type cast
+    };
+
+    return this.http.post<string>(`${environment.endPoint}/login`, formDataTransformation(credentials), options).pipe(
       tap(this.setUserFromResponse.bind(this))
     );
   }
@@ -44,13 +48,13 @@ export class AuthService {
     return this.http.post<User>(`${environment.endPoint}/users/restore/confirm`, credentials);
   }
 
-  setUserFromResponse(response: string) {
-    const userFromToken = this.helper.decodeToken(response)
+  setUserFromResponse(response: any) {
+    const userFromToken = this.helper.decodeToken(response.headers.get('token'))
     sessionStorage.setItem('firstName', userFromToken.Name);
-    sessionStorage.setItem('token', response);
+    sessionStorage.setItem('token', response.headers.get('token'));
     sessionStorage.setItem('lastName', userFromToken.LastName);
     sessionStorage.setItem('email', userFromToken.Email);
-    sessionStorage.setItem('_id', userFromToken.Id);
+    sessionStorage.setItem('_id', userFromToken.ID);
   }
 
   get token() {
@@ -60,6 +64,19 @@ export class AuthService {
   get fullName() {
     return `${sessionStorage.getItem('lastName')} ${sessionStorage.getItem('firstName')}`
   }
+
+  get userId() {
+    return sessionStorage.getItem('_id')
+  }
+
+  getUserInfo(): Observable<any> {
+    console.log(this.token)
+    let headers = new HttpHeaders({
+      'Token': this.token || '' });
+    let options = { headers: headers };
+    return this.http.get(`${environment.endPoint}/user/${this.userId}`, options);
+  }
+
   // get permissions(): Permission[] {
   //   return this.user?.permissions || [];
   // }

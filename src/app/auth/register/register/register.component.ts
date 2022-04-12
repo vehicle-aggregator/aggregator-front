@@ -29,9 +29,11 @@ export class RegisterComponent extends FormComponent implements OnInit {
     }
     if (this.currentStatus === 'invite-to-company') {
       await this.inviteTokenComponent.submit()
+      this.currentStatus = 'create-account'
     }
     if (this.currentStatus === 'create-company') {
       await this.createCompanyComponent.submit()
+      this.currentStatus = 'create-account'
     }
   }
 

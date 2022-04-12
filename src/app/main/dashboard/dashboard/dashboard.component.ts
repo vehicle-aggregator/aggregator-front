@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
-import {Statistic} from "../../../shared/models/statistic.moddel";
+import {Period, Statistic} from "../../../shared/models/statistic.moddel";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +8,8 @@ import {Statistic} from "../../../shared/models/statistic.moddel";
   styleUrls: ['./dashboard.component.less']
 })
 export class DashboardComponent implements OnInit {
+  period: Period = Period.Daily;
+  items = Object.values(Period);
 
   statistics: Statistic[] = statisticsMock;
   newUsersResults: any = newUsersResultsMock;
@@ -27,9 +29,77 @@ export class DashboardComponent implements OnInit {
   getTranslate(kye: string) {
     return this.translate.instant(kye)
   }
+
+  periodChanged() {
+
+  }
 }
 
-export const tripsMock = []
+export const tripsMock = [{
+  "name": "Completed trips",
+  "series": [
+    {
+      "name": "01.01",
+      "value": 12,
+    },
+    {
+      "name": "02.01",
+      "value": 15,
+    },
+    {
+      "name": "03.01",
+      "value": 0,
+    },
+    {
+      "name": "04.01",
+      "value": 10,
+    },
+    {
+      "name": "05.01",
+      "value": 5,
+    },
+    {
+      "name": "06.01",
+      "value": 19,
+    },
+    {
+      "name": "07.01",
+      "value": 5,
+    }
+  ]
+},{
+  "name": "Cancelled trips",
+  "series": [
+    {
+      "name": "01.01",
+      "value": 2,
+    },
+    {
+      "name": "02.01",
+      "value": 1,
+    },
+    {
+      "name": "03.01",
+      "value": 0,
+    },
+    {
+      "name": "04.01",
+      "value": 5,
+    },
+    {
+      "name": "05.01",
+      "value": 0,
+    },
+    {
+      "name": "06.01",
+      "value": 1,
+    },
+    {
+      "name": "07.01",
+      "value": 4,
+    }
+  ]
+}]
 export const newUsersResultsMock = [
   {
     "name": "Users",

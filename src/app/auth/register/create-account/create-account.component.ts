@@ -45,7 +45,9 @@ export class CreateAccountComponent extends FormComponent {
     let user = null;
 
     try {
-      user = await this.authService.register(this.form.value).toPromise()
+      const newUser = this.form.value;
+      delete newUser['confirmPassword']
+      user = await this.authService.register(newUser).toPromise()
     } catch (e) {
       // @ts-ignore
       this.handleError(e)

@@ -4,3 +4,9 @@ export class Statistic {
   value: number;
   percent: number;
 }
+
+export enum Period {
+  Daily = 'daily',
+  Weekly = 'weekly',
+  Monthly = 'monthly'
+}

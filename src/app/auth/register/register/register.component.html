@@ -1,6 +1,6 @@
 <div class="background">
 
-  <div class="white-block" style="min-width: 45%; overflow: auto">
+  <div class="white-block" style="width: 45vw; max-height: 80vh; overflow: auto">
     <div class="ll-form ll-form-big">
       <p class="h3 text-center mb-2 black">Create a new account</p>
       <p class="text-center" style="color: #808080">Please set up information for your account and your company.</p>
@@ -20,7 +20,10 @@
         </div>
         <div class="line"></div>
       </div>
+    </div>
 
+
+    <div>
       <ng-container *ngIf="currentStatus === 'create-account'">
         <app-create-account #accountComponent></app-create-account>
         <div class="d-flex justify-content-end">
@@ -46,7 +49,6 @@
           <button type="submit" class="ll-button fill" (click)="submit()">Create company</button>
         </div>
       </ng-container>
-
-      </div>
+    </div>
   </div>
 </div>

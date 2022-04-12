@@ -6,6 +6,15 @@ export interface User {
   middlename?: string;
   email: string;
   birthday?: Date;
+  CreatedAt: Date;
+  DeletedAt: Date;
+  ID: number;
+  UpdatedAt: Date;
+  Workers: any;
+  gender: Gender;
+  last_name: string;
+  middle_name: string;
+  name: string;
 }
 
 export interface RegisterCredentials {
@@ -49,4 +58,10 @@ export interface UpdateUserModel {
   lastName: string;
   phoneNumber: string;
   icon: string;
+}
+
+export enum Gender {
+  Male = 'male',
+  Female = 'female',
+  Neutral = 'neutral'
 }

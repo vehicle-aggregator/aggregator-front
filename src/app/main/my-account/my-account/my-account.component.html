@@ -14,5 +14,81 @@
     </div>
   </div>
 
-  <div class="white-block mt-4"></div>
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="white-block mt-4">
+        <label class="h4 mb-4" style="color: #808080">User information</label>
+
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <div class="ll-form-row">
+              <label class="ll-form-label">First name</label>
+              <div class="ll-form-control">{{ userInfo.name }}</div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Middle name</label>
+              <div class="ll-form-control">{{ userInfo.middle_name }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Last name</label>
+              <div class="ll-form-control">{{ userInfo.last_name }}</div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Gender</label>
+              <div class="ll-form-control">{{ userInfo.gender }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Birthday</label>
+              <div class="ll-form-control">{{ userInfo.birthday | date: 'yyyy-MM-dd' }}</div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <div class="ll-form-row">
+              <label class="ll-form-label">E-mail</label>
+              <div class="ll-form-control">{{ userInfo.email }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mt-3 mt-md-0">
+      <div class="white-block mt-4">
+        <label class="h4 mb-4" style="color: #808080">Account information</label>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Date of registration</label>
+              <div class="ll-form-control">{{ userInfo.CreatedAt | date: 'yyyy-MM-dd' }}</div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Date of last update</label>
+              <div class="ll-form-control">{{ userInfo.UpdatedAt | date: 'yyyy-MM-dd' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

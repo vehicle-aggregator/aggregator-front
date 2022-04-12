@@ -1,11 +1,23 @@
-<div style="width: 70vw;" class="mt-4">
-  <a class="h3" style="color: #808080">{{getTranslate('Dashboard')}}</a>
+<div style="width: 70vw" class="mt-4 pb-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <a class="h3" style="color: #808080">{{getTranslate('Dashboard')}}</a>
+
+    <ng-select
+      style="width: 100px"
+      [searchable]="false"
+      [clearable]="false"
+      [(ngModel)]="period"
+      (ngModelChange)="periodChanged()"
+      [items]="items">
+    </ng-select>
+  </div>
 
   <div class="statistics">
     <app-statistic *ngFor="let statistic of statistics" [statistic]="statistic"></app-statistic>
   </div>
 
   <div class="white-block mt-4">
+    <label class="header">Number of new users</label>
     <div class="chart-block">
       <ngx-charts-line-chart
         [xAxis]="true"
@@ -18,6 +30,8 @@
   </div>
 
   <div class="white-block mt-4">
+    <label class="header">Number of new users</label>
+
     <div class="chart-block">
       <ngx-charts-line-chart
         [legend]="true"
