@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileLoaderComponent } from './components/file-loader/file-loader.component';
 import { SafePipe, SafeUrlPipe } from './pipes/safe.pipe';
 import { FormErrorDirective } from './directives/form-error.directive';
+import {TranslateService} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { FormErrorDirective } from './directives/form-error.directive';
     FileLoaderComponent,
     FormErrorDirective,
     NgSelectModule,
+  ], providers: [
+    TranslateService
   ]
 })
 export class SharedModule { }

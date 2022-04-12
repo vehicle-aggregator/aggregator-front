@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
@@ -27,6 +27,8 @@ import { SharedModule } from '../shared/shared.module';
             deps: [HttpClient]
           }
         })
+  ], providers: [
+    TranslateService
   ]
 })
 export class MainModule { }
