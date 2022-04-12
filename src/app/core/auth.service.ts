@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
   LoginCredentials,
-  RestoreConfirmCredentials,
-  User,
   RegisterCredentials
 } from '../shared/models/auth.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -20,13 +18,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  get isAuthenticated(): boolean {
-    return true;
-  }
-
   login(credentials: LoginCredentials): Observable<string> {
     const options = {
-      observe: "response" as 'body', // to display the full response & as 'body' for type cast
+      observe: "response" as 'body',
     };
 
     return this.http.post<string>(`${environment.endPoint}/login`, formDataTransformation(credentials), options).pipe(
@@ -36,16 +30,21 @@ export class AuthService {
 
   register(credentials: RegisterCredentials): Observable<string> {
     return this.http.post<string>(`${environment.endPoint}/register`, formDataTransformation(credentials)).pipe(
-      tap(this.setUserFromResponse.bind(this))
+      tap(this.setUserFromTokenResponse.bind(this))
     );
   }
 
-  logout(): Observable<any> {
-    return this.http.post(`${environment.endPoint}/logout`, {});
+  logout(): void {
+    sessionStorage.clear();
   }
 
-  restoreConfirm(credentials: RestoreConfirmCredentials): Observable<User> {
-    return this.http.post<User>(`${environment.endPoint}/users/restore/confirm`, credentials);
+  setUserFromTokenResponse(response: string) {
+    const userFromToken = this.helper.decodeToken(response)
+    sessionStorage.setItem('firstName', userFromToken.Name);
+    sessionStorage.setItem('token', response);
+    sessionStorage.setItem('lastName', userFromToken.LastName);
+    sessionStorage.setItem('email', userFromToken.Email);
+    sessionStorage.setItem('_id', userFromToken.ID);
   }
 
   setUserFromResponse(response: any) {
@@ -70,26 +69,9 @@ export class AuthService {
   }
 
   getUserInfo(): Observable<any> {
-    console.log(this.token)
     let headers = new HttpHeaders({
       'Token': this.token || '' });
     let options = { headers: headers };
     return this.http.get(`${environment.endPoint}/user/${this.userId}`, options);
   }
-
-  // get permissions(): Permission[] {
-  //   return this.user?.permissions || [];
-  // }
-  //
-  // hasPermission(permission: Permission): boolean {
-  //   return this.permissions.includes(permission);
-  // }
-  //
-  // hasEveryPermission(permissions: Permission[]): boolean {
-  //   return permissions.every(p => this.hasPermission(p));
-  // }
-  //
-  // hasSomePermission(permissions: Permission[]): boolean {
-  //   return permissions.some(p => this.hasPermission(p));
-  // }
 }

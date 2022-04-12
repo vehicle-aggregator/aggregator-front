@@ -3,6 +3,7 @@ import { menu } from "../../shared/models/menu-item";
 import {AuthService} from "../../core/auth.service";
 import {TranslateService} from '@ngx-translate/core';
 import {environment} from "../../../environments/environment";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-topbar',
@@ -14,7 +15,8 @@ export class TopbarComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,5 +38,10 @@ export class TopbarComponent implements OnInit {
 
   get userName(): string {
     return this.authService.fullName
+  }
+
+  logout() {
+    this.authService.logout()
+    this.router.navigateByUrl('auth/login');
   }
 }

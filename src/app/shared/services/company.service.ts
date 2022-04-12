@@ -4,12 +4,13 @@ import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { Company, FullCompanyModel } from "../models/company.model";
 import { AuthService } from "../../core/auth.service";
+import {formDataTransformation} from "../helpers/form-data";
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
-
   constructor(
     private http: HttpClient,
     private authService: AuthService
@@ -38,5 +39,12 @@ export class CompanyService {
       'Token': this.authService.token || '' });
     let options = { headers: headers };
     return this.http.get<any>(`${environment.endPoint}/company/${id}`, options)
+  }
+
+  companyConnect(code: string): Observable<any> {
+    let headers = new HttpHeaders({
+      'Token': this.authService.token || '' });
+    let options = { headers: headers };
+    return this.http.post<any>(`${environment.endPoint}/company/connect`, formDataTransformation({ invite_code: code }) , options);
   }
 }

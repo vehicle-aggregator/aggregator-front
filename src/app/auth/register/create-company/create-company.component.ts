@@ -42,7 +42,7 @@ export class CreateCompanyComponent extends FormComponent implements OnInit {
         sessionStorage.setItem('uid', business.BusinessUser[0].Uid);
         const companyInfo: Company = this.getCompany(business)
         const company = await this.companyService.createCompany(companyInfo).toPromise()
-        if (company) this.router.navigateByUrl('');
+        if (company) await this.router.navigateByUrl('');
       } catch (e) {
         // @ts-ignore
         this.handleError(e)
