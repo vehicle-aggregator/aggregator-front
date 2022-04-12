@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
-import { formDataTransformation } from "../helpers/form-data";
 import { Company, FullCompanyModel } from "../models/company.model";
 import { AuthService } from "../../core/auth.service";
 
@@ -32,5 +31,12 @@ export class CompanyService {
       'Token': this.authService.token || '' });
     let options = { headers: headers };
     return this.http.get<any>(`${environment.endPoint}/business/${uid}`, options)
+  }
+
+  getCompanyById(id: number): Observable<any> {
+    let headers = new HttpHeaders({
+      'Token': this.authService.token || '' });
+    let options = { headers: headers };
+    return this.http.get<any>(`${environment.endPoint}/company/${id}`, options)
   }
 }

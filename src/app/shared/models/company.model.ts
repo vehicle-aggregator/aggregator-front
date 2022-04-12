@@ -14,7 +14,8 @@ export class Document {
 
 export class FullCompanyModel {
   blocked: boolean;
-  createdAt: string;
+  CreatedAt: string;
+  UpdatedAt: string;
   deletedAt: {
     time: string,
     valid: true
