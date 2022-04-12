@@ -2,9 +2,9 @@
   If you want to join an existing company, enter an invite code.
 </p>
 
-<form class="ll-form-row">
+<form [formGroup]="form" class="ll-form-row">
   <label class="ll-form-label">Invite code</label>
   <div class="ll-form-control" ll-form-error>
-    <input type="password" class="ll-input stretch" placeholder="Invite code">
+    <input formControlName="code" type="password" class="ll-input stretch" placeholder="Invite code">
   </div>
 </form>

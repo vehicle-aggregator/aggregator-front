@@ -31,6 +31,8 @@ export class CreateCompanyComponent extends FormComponent implements OnInit {
   }
 
   async submit() {
+    if (!this.checkForm()) return;
+
     const business = sessionStorage.getItem('uid') ?
       await this.companyService.getBusinessAccount(Number(sessionStorage.getItem('uid'))).toPromise() :
       await this.companyService.createBusinessAccount().toPromise()

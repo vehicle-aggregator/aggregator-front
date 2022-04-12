@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
-import {EmailValidator} from "../../../shared/validators/validators";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {EmailValidator, PasswordValidator, setError} from "../../../shared/validators/validators";
 import {AuthService} from "../../../core/auth.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
-import {finalize} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {FormComponent} from "../../../shared/form/form.component";
 
@@ -24,7 +23,10 @@ export class CreateAccountComponent extends FormComponent {
     gender: [null, [Validators.required]],
     email: [null, [Validators.required, EmailValidator]],
     birthday: [null, [Validators.required]],
-    password: [null, [Validators.required]],
+    password: [null, [Validators.required, PasswordValidator]],
+    confirmPassword: [null, [Validators.required, PasswordValidator]]
+  }, {
+    validators: this.equalPasswordsValidator
   });
 
   constructor(
@@ -37,7 +39,6 @@ export class CreateAccountComponent extends FormComponent {
   }
 
   async submit() {
-    console.log(1)
     if (!this.checkForm()) return;
 
     this.spinner.show();
@@ -64,5 +65,12 @@ export class CreateAccountComponent extends FormComponent {
       // return;
     }
     //this.toastr.error(ERRORS[error.code]);
+  }
+
+  equalPasswordsValidator(form: FormGroup) {
+    const passControl = form.get('password'),
+      confirmPassControl = form.get('confirmPassword'),
+      valid = passControl?.value === confirmPassControl?.value;
+    setError(confirmPassControl, valid, 'equal');
   }
 }

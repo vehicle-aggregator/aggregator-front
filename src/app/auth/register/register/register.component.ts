@@ -27,6 +27,9 @@ export class RegisterComponent extends FormComponent implements OnInit {
       const newUser = await this.createAccountComponent.submit()
       if (newUser) this.currentStatus = 'invite-to-company'
     }
+    if (this.currentStatus === 'invite-to-company') {
+      await this.inviteTokenComponent.submit()
+    }
     if (this.currentStatus === 'create-company') {
       await this.createCompanyComponent.submit()
     }
