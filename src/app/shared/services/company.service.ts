@@ -5,7 +5,6 @@ import { environment } from "../../../environments/environment";
 import { Company, FullCompanyModel } from "../models/company.model";
 import { AuthService } from "../../core/auth.service";
 import {formDataTransformation} from "../helpers/form-data";
-import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'

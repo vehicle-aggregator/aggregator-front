@@ -4,6 +4,7 @@ export enum MenuItemUrl {
   Transports = 'transports',
   Routes = 'routes',
   Trips = 'trips',
+  Places = 'places',
 }
 
 export interface MenuItem {
@@ -37,5 +38,10 @@ export const menu: MenuItem[] = [
     icon: 'map',
     name: 'Trips',
     link: MenuItemUrl.Trips
+  },
+  {
+    icon: 'map',
+    name: 'Places',
+    link: MenuItemUrl.Places
   }
 ]

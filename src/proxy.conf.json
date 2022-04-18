@@ -1,7 +1,9 @@
 {
   "/api/v1": {
-    "target": "http://localhost:8080",
+    "target": "http://95.66.162.252:15222",
     "secure": false,
     "logLevel": "debug"
   }
 }
+
+// http://localhost:8080
