@@ -548,3 +548,58 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border: 1px solid @danger-color;
   }
 }
+
+.ll-table {
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  th, td {
+    padding: 0 0 0 16px;
+
+    &:last-child {
+      padding-right: 16px;
+    }
+  }
+
+  th {
+    background: @primary-color;
+    color: @white-color;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    line-height: 22px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    cursor: default;
+  }
+
+  td {
+    background: @white-color;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 24px;
+    color: @black-color;
+    padding-bottom: 16px;
+    padding-top: 16px;
+  }
+
+  tbody tr, thead tr {
+    border-bottom: 1px solid @whitesmoke-color;
+    cursor: default;
+  }
+
+  &.stretch {
+    width: 100%;
+  }
+}
+
+.delete {
+  color: @danger-color;
+  cursor: pointer;
+}
+
+.edit {
+  color: @gray-color;
+  cursor: pointer;
+}
