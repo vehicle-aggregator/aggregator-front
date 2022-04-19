@@ -4,7 +4,6 @@ import { RoutesService } from "../../../shared/services/routes.service";
 import { RouteModel } from "../../../shared/models/route.model";
 import { PlacesService } from "../../../shared/services/places.service";
 import { PlaceModel } from "../../../shared/models/place.model";
-import {CreateTransportComponent} from "../../transports/create-transport/create-transport.component";
 import {BsModalService} from "ngx-bootstrap/modal";
 import {CreateRouteComponent} from "../create-route/create-route.component";
 

@@ -20,6 +20,7 @@ export class CreateRouteComponent extends FormComponent implements OnInit {
   form = this.fb.group({
     from : [null, [Validators.required]],
     to : [null, [Validators.required]],
+    active_from: [null, [Validators.required]],
   });
 
   constructor(
