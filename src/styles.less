@@ -572,6 +572,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-bottom: 8px;
     padding-top: 8px;
     cursor: default;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 
   td {
@@ -602,4 +606,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .edit {
   color: @gray-color;
   cursor: pointer;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: @primary-color @white-color;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: @white-color;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: @primary-color;
+  border-radius: 20px;
+  border: 3px solid @white-color;
 }

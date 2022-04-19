@@ -53,32 +53,34 @@
       </div>
     </form>
 
-    <table class="ll-table stretch mb-3">
-      <thead>
-      <tr>
-        <th>From</th>
-        <th>To</th>
-        <th>Active from</th>
-        <th>Active to</th>
-        <th>Created at</th>
-        <th></th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let route of routes">
-        <td>{{ getPlaceName(route.FromID) }}</td>
-        <td>{{ getPlaceName(route.ToID) }}</td>
-        <td>{{ route.ActiveFrom | date: 'yyyy-MM-dd' }}</td>
-        <td>{{ route.ActiveTo | date: 'yyyy-MM-dd' }}</td>
-        <td>{{ route.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
-        <td width="30"><mat-icon class="edit">edit</mat-icon></td>
-        <td width="30"><mat-icon class="delete">delete</mat-icon></td>
-      </tr>
-      <tr *ngIf="routes.length === 0" style="cursor: default">
-        <td colspan="7">No routes found</td>
-      </tr>
-      </tbody>
-    </table>
+    <div style="height: 50vh; overflow: auto">
+      <table class="ll-table stretch mb-3">
+        <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Active from</th>
+          <th>Active to</th>
+          <th>Created at</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let route of routes">
+          <td>{{ getPlaceName(route.FromID) }}</td>
+          <td>{{ getPlaceName(route.ToID) }}</td>
+          <td>{{ route.ActiveFrom | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ route.ActiveTo | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ route.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
+          <td width="30"><mat-icon class="edit">edit</mat-icon></td>
+          <td width="30"><mat-icon class="delete">delete</mat-icon></td>
+        </tr>
+        <tr *ngIf="routes.length === 0" style="cursor: default">
+          <td colspan="7">No routes found</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
