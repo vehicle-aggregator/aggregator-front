@@ -4,6 +4,7 @@ import { VehicleService } from "../../../shared/services/vehicle.service";
 import { BsModalRef } from "ngx-bootstrap/modal";
 import { HttpErrorResponse } from "@angular/common/http";
 import {FormComponent} from "../../../shared/form/form.component";
+import { NumberValidator, NumberPlate } from 'src/app/shared/validators/validators';
 
 @Component({
   selector: 'app-create-transport',
@@ -17,8 +18,8 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
 
   //@ts-ignore
   form = this.fb.group({
-    number_plate : [null, [Validators.required]],
-    passengerCount : [null, [Validators.required]],
+    number_plate : [null, [Validators.required, NumberPlate]],
+    passengerCount : [null, [Validators.required, NumberValidator]],
     vehicleCategoryID  : [null, [Validators.required]],
   });
 

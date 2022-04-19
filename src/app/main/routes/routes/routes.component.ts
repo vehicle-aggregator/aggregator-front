@@ -38,11 +38,11 @@ export class RoutesComponent implements OnInit {
   }
 
   showCreateModal() {
-    const modal = this.modalService.show(CreateRouteComponent, { initialState: { places: this.places }, class: 'modal-540'});
-    // modal.content?.isVehicleCreated.subscribe(async (vehicle) => {
-    //   if (vehicle) {
-    //     this.vehicles = await this.vehicleService.getVehicle().toPromise()
-    //   }
-    // });
+    const modal = this.modalService.show(CreateRouteComponent, { initialState: { places: this.places }, class: 'modal-lg'});
+    modal.content?.isRouteCreated.subscribe(async (route) => {
+      if (route) {
+        this.routes = await this.routesService.getRoutes().toPromise()
+      }
+    });
   }
 }

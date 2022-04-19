@@ -10,6 +10,49 @@
   </div>
 
   <div class="white-block mt-4">
+    <form class="d-flex align-items-center">
+
+      <div class="ll-form-row mr-2" style="flex: 1">
+        <label class="ll-form-label">From</label>
+        <div class="ll-form-control" ll-form-error>
+          <ng-select
+            placeholder="From"
+            class="stretch"
+            [clearable]="false"
+            bindLabel="Name"
+            bindValue="ID"
+            [items]="places">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="ll-form-row mr-2" style="flex: 1">
+        <label class="ll-form-label">To</label>
+        <div class="ll-form-control" ll-form-error>
+          <ng-select
+            placeholder="To"
+            class="stretch"
+            [clearable]="false"
+            bindLabel="Name"
+            bindValue="ID"
+            [items]="places">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="ll-form-row mr-2" style="flex: 1">
+        <label class="ll-form-label">Date</label>
+        <div class="ll-form-control" ll-form-error>
+          <input type="text" class="ll-input stretch" placeholder="Date">
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <button type="submit" class="ll-button fill mr-2">Find</button>
+        <button type="submit" class="ll-button outline">Reset</button>
+      </div>
+    </form>
+
     <table class="ll-table stretch mb-3">
       <thead>
       <tr>
@@ -35,12 +78,12 @@
         <td>{{ route.PassengerCount }}</td>
         <td>{{ route.TicketBought }}</td>
         <td>{{ route.Price }} ₽</td>
-        <td>{{ route.StartAt | date: 'yyyy-MM-dd' }}</td>
-        <td>{{ route.EndAt | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ route.StartAt | date: 'yyyy-MM-dd HH:mm' }}</td>
+        <td>{{ route.EndAt | date: 'yyyy-MM-dd HH:mm' }}</td>
         <td width="30"><mat-icon class="edit">edit</mat-icon></td>
         <td width="30"><mat-icon class="delete">delete</mat-icon></td>
       </tr>
-      <tr *ngIf="trips.length === 0" style="cursor: default">
+      <tr *ngIf="trips?.length === 0" style="cursor: default">
         <td colspan="7">No trips found</td>
       </tr>
       </tbody>
