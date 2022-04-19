@@ -26,12 +26,12 @@
         <td>{{ vehicle.NumberPlate }}</td>
         <td>{{ getCategory(vehicle.CategoryID) }}</td>
         <td>{{ vehicle.PassengerCount }}</td>
-        <td>{{ vehicle.CreatedAt | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ vehicle.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
         <td width="30"><mat-icon class="edit">edit</mat-icon></td>
         <td width="30"><mat-icon class="delete">delete</mat-icon></td>
       </tr>
       <tr *ngIf="vehicles.length === 0" style="cursor: default">
-        <td colspan="6">No vehicles found</td>
+        <td colspan="6">No transports found</td>
       </tr>
       </tbody>
     </table>

@@ -1,6 +1,50 @@
 <div style="width: 70vw;" class="mt-4">
-  <a class="h3" style="color: #808080">{{getTranslate('Trips')}}</a>
 
-  <div class="white-block mt-4"></div>
+  <div class="d-flex justify-content-between align-items-center">
+    <a class="h3" style="color: #808080">{{getTranslate('Trips')}}</a>
+
+    <button class="ll-button outline" (click)="showCreateModal()">
+      <mat-icon class="mr-2">add</mat-icon>
+      Create
+    </button>
+  </div>
+
+  <div class="white-block mt-4">
+    <table class="ll-table stretch mb-3">
+      <thead>
+      <tr>
+        <th>Place from</th>
+        <th>Place to</th>
+        <th>Company name</th>
+        <th>Number plate</th>
+        <th>Passenger count</th>
+        <th>Ticket bought</th>
+        <th>Price</th>
+        <th>Start at</th>
+        <th>End at</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let route of trips">
+        <td>{{ route.PlaceFrom }}</td>
+        <td>{{ route.PlaceTo }}</td>
+        <td>{{ route.CompanyName }}</td>
+        <td>{{ route.NumberPlate }}</td>
+        <td>{{ route.PassengerCount }}</td>
+        <td>{{ route.TicketBought }}</td>
+        <td>{{ route.Price }} ₽</td>
+        <td>{{ route.StartAt | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ route.EndAt | date: 'yyyy-MM-dd' }}</td>
+        <td width="30"><mat-icon class="edit">edit</mat-icon></td>
+        <td width="30"><mat-icon class="delete">delete</mat-icon></td>
+      </tr>
+      <tr *ngIf="trips.length === 0" style="cursor: default">
+        <td colspan="7">No trips found</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 

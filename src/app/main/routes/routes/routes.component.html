@@ -1,5 +1,84 @@
 <div style="width: 70vw;" class="mt-4">
-  <a class="h3" style="color: #808080">{{getTranslate('Routes')}}</a>
 
-  <div class="white-block mt-4"></div>
+  <div class="d-flex justify-content-between align-items-center">
+    <a class="h3" style="color: #808080">{{getTranslate('Routes')}}</a>
+
+    <button class="ll-button outline" (click)="showCreateModal()">
+      <mat-icon class="mr-2">add</mat-icon>
+      Create
+    </button>
+  </div>
+
+  <div class="white-block mt-4">
+    <form class="d-flex align-items-center">
+
+      <div class="ll-form-row mr-2" style="flex: 1">
+        <label class="ll-form-label">From</label>
+        <div class="ll-form-control" ll-form-error>
+          <ng-select
+            placeholder="From"
+            class="stretch"
+            [clearable]="false"
+            bindLabel="Name"
+            bindValue="ID"
+            [items]="places">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="ll-form-row mr-2" style="flex: 1">
+        <label class="ll-form-label">To</label>
+        <div class="ll-form-control" ll-form-error>
+          <ng-select
+            placeholder="To"
+            class="stretch"
+            [clearable]="false"
+            bindLabel="Name"
+            bindValue="ID"
+            [items]="places">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="ll-form-row mr-2" style="flex: 1">
+        <label class="ll-form-label">Date</label>
+        <div class="ll-form-control" ll-form-error>
+          <input type="text" class="ll-input stretch" placeholder="Date">
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <button type="submit" class="ll-button fill mr-2">Find</button>
+        <button type="submit" class="ll-button outline">Reset</button>
+      </div>
+    </form>
+
+    <table class="ll-table stretch mb-3">
+      <thead>
+      <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Active from</th>
+        <th>Active to</th>
+        <th>Created at</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let route of routes">
+        <td>{{ getPlaceName(route.FromID) }}</td>
+        <td>{{ getPlaceName(route.ToID) }}</td>
+        <td>{{ route.ActiveFrom | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ route.ActiveTo | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ route.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
+        <td width="30"><mat-icon class="edit">edit</mat-icon></td>
+        <td width="30"><mat-icon class="delete">delete</mat-icon></td>
+      </tr>
+      <tr *ngIf="routes.length === 0" style="cursor: default">
+        <td colspan="7">No routes found</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
