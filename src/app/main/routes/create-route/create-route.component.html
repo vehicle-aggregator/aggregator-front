@@ -1,0 +1,42 @@
+<div class="p-4">
+  <p class="h4 mt-0 d-flex align-items-center justify-content-center" style="color: #808080">
+    Create route
+  </p>
+
+  <form [formGroup]="form" class="ll-form ll-form-big">
+    <div class="ll-form-row">
+      <label class="ll-form-label">From</label>
+      <div class="ll-form-control" ll-form-error>
+        <ng-select
+          placeholder="From"
+          formControlName="from"
+          class="stretch"
+          [clearable]="false"
+          bindLabel="Name"
+          bindValue="ID"
+          [items]="places">
+        </ng-select>
+      </div>
+    </div>
+
+    <div class="ll-form-row">
+      <label class="ll-form-label">To</label>
+      <div class="ll-form-control" ll-form-error>
+        <ng-select
+          placeholder="To"
+          formControlName="to"
+          class="stretch"
+          [clearable]="false"
+          bindLabel="Name"
+          bindValue="ID"
+          [items]="places">
+        </ng-select>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="ll-button outline" (click)="bsModalRef.hide()">Cancel</button>
+      <button type="submit" class="ll-button fill ml-2" (click)="submit()">Create route</button>
+    </div>
+  </form>
+</div>

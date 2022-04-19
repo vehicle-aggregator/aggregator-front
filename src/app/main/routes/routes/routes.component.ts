@@ -3,7 +3,10 @@ import { TranslateService } from "@ngx-translate/core";
 import { RoutesService } from "../../../shared/services/routes.service";
 import { RouteModel } from "../../../shared/models/route.model";
 import { PlacesService } from "../../../shared/services/places.service";
-import {PlaceModel} from "../../../shared/models/place.model";
+import { PlaceModel } from "../../../shared/models/place.model";
+import {CreateTransportComponent} from "../../transports/create-transport/create-transport.component";
+import {BsModalService} from "ngx-bootstrap/modal";
+import {CreateRouteComponent} from "../create-route/create-route.component";
 
 @Component({
   selector: 'app-routes',
@@ -17,6 +20,7 @@ export class RoutesComponent implements OnInit {
   constructor(
     public translate: TranslateService,
     private routesService: RoutesService,
+    private modalService: BsModalService,
     private placesService: PlacesService,
   ) { }
 
@@ -34,6 +38,11 @@ export class RoutesComponent implements OnInit {
   }
 
   showCreateModal() {
-
+    const modal = this.modalService.show(CreateRouteComponent, { initialState: { places: this.places }, class: 'modal-540'});
+    // modal.content?.isVehicleCreated.subscribe(async (vehicle) => {
+    //   if (vehicle) {
+    //     this.vehicles = await this.vehicleService.getVehicle().toPromise()
+    //   }
+    // });
   }
 }
