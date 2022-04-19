@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
-import {VehicleService} from "../../../shared/services/vehicle.service";
-import {BsModalRef} from "ngx-bootstrap/modal";
+import {Component, EventEmitter, OnInit} from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
+import { VehicleService } from "../../../shared/services/vehicle.service";
+import { BsModalRef } from "ngx-bootstrap/modal";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: 'app-create-transport',
@@ -11,6 +12,7 @@ import {BsModalRef} from "ngx-bootstrap/modal";
 export class CreateTransportComponent implements OnInit {
 
   vehicleTypes: any[];
+  isVehicleCreated = new EventEmitter();
 
   //@ts-ignore
   form = this.fb.group({
@@ -30,6 +32,18 @@ export class CreateTransportComponent implements OnInit {
   }
 
   submit() {
+    this.vehicleService.createVehicle({ ...this.form.value, companyID: 1 }).subscribe(
+      data => {
+        this.isVehicleCreated.emit(data)
+        this.bsModalRef.hide()
+      },
+      error => this.handleError(error)
+    )
+  }
 
+  handleError(res: HttpErrorResponse) {
+    if (res.status !== 400) return;
+    const error = res.error;
+    //this.toastr.error(ERRORS[error.code]);
   }
 }

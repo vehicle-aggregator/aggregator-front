@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
 import { VehicleService } from "../../../shared/services/vehicle.service";
 import { BsModalService } from "ngx-bootstrap/modal";
-import {CreateTransportComponent} from "../create-transport/create-transport.component";
+import { CreateTransportComponent } from "../create-transport/create-transport.component";
+import { VehicleModel, VehicleTypeModel } from "../../../shared/models/vehicle.model";
 
 @Component({
   selector: 'app-transports',
@@ -10,14 +11,23 @@ import {CreateTransportComponent} from "../create-transport/create-transport.com
   styleUrls: ['./transports.component.less']
 })
 export class TransportsComponent implements OnInit {
+  vehicleTypes: VehicleTypeModel[] = [];
+  vehicles: VehicleModel[] = [];
+
   constructor(
     public translate: TranslateService,
-    private vehicleService: VehicleService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private vehicleService: VehicleService
   ) { }
 
-  ngOnInit(): void {
-    this.vehicleService.getVehicleType().subscribe(data => console.log(data))
+  async ngOnInit() {
+    const [vehicles, vehicleTypes] = await Promise.all([
+      this.vehicleService.getVehicle().toPromise(),
+      this.vehicleService.getVehicleType().toPromise()
+    ])
+
+    this.vehicles = vehicles;
+    this.vehicleTypes = vehicleTypes;
   }
 
   getTranslate(kye: string) {
@@ -26,8 +36,14 @@ export class TransportsComponent implements OnInit {
 
   showCreateModal() {
     const modal = this.modalService.show(CreateTransportComponent, { class: 'modal-540'});
-    // modal.content?.isUserInvited.subscribe(value => {
-    //   if (value) this.loadUsers();
-    // });
+    modal.content?.isVehicleCreated.subscribe(async (vehicle) => {
+      if (vehicle) {
+        this.vehicles = await this.vehicleService.getVehicle().toPromise()
+      }
+    });
+  }
+
+  getCategory(CategoryID: number): string {
+    return this.vehicleTypes.find(vehicle => vehicle.ID === CategoryID)?.Name || '-'
   }
 }

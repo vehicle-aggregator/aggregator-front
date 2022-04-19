@@ -10,6 +10,30 @@
   </div>
 
   <div class="white-block mt-4">
-
+    <table class="ll-table stretch mt-4 mb-3">
+      <thead>
+      <tr>
+        <th>Number plate</th>
+        <th>Type</th>
+        <th>Passenger count</th>
+        <th>Created at</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let vehicle of vehicles">
+        <td>{{ vehicle.NumberPlate }}</td>
+        <td>{{ getCategory(vehicle.CategoryID) }}</td>
+        <td>{{ vehicle.PassengerCount }}</td>
+        <td>{{ vehicle.CreatedAt | date: 'yyyy-MM-dd' }}</td>
+        <td width="30"><mat-icon class="edit">edit</mat-icon></td>
+        <td width="30"><mat-icon class="delete">delete</mat-icon></td>
+      </tr>
+      <tr *ngIf="vehicles.length === 0" style="cursor: default">
+        <td colspan="6">No vehicles found</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
