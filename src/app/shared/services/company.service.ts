@@ -40,6 +40,14 @@ export class CompanyService {
     return this.http.get<any>(`${environment.endPoint}/company/${id}`, options)
   }
 
+  getMyCompany(): Observable<any> {
+    let headers = new HttpHeaders({
+      'Token': this.authService.token || '' });
+    let options = { headers: headers };
+
+    return this.http.get<any>(`${environment.endPoint}/company/worker`, options)
+  }
+
   companyConnect(code: string): Observable<any> {
     let headers = new HttpHeaders({
       'Token': this.authService.token || '' });

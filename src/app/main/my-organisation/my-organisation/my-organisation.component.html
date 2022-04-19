@@ -14,10 +14,17 @@
         <label class="h4 mb-4">Company information</label>
 
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 col-lg-6">
             <div class="ll-form-row">
               <label class="ll-form-label">Company name</label>
               <div class="ll-form-control">{{ company?.name }}</div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Company status</label>
+              <div class="ll-form-control">{{ company?.moderated ? 'Ready' : 'Not ready'  }}</div>
             </div>
           </div>
         </div>
