@@ -29,6 +29,7 @@ Navigate to the workspace folder, such as aggregator-front and run the following
 
 ```sh
 cd aggregator-front
+npm i
 ng serve --open
 ```
 The ng serve command launches the server, watches your files, and rebuilds the app as you make changes to those files.
