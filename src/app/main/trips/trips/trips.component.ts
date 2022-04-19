@@ -35,10 +35,10 @@ export class TripsComponent implements OnInit {
 
   showCreateModal() {
     const modal = this.modalService.show(CreateTripComponent, {class: 'modal-lg'});
-    // modal.content?.isRouteCreated.subscribe(async (route) => {
-    //   if (route) {
-    //     this.routes = await this.routesService.getRoutes().toPromise()
-    //   }
-    // toPromise});
+    modal.content?.isTripCreated.subscribe(async (trip) => {
+      if (trip) {
+        this.trips = await this.tripsService.getTrips().toPromise()
+      }
+    });
   }
 }

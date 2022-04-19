@@ -4,7 +4,6 @@
   </p>
 
   <form [formGroup]="form" class="row">
-
     <div class="col-12 col-lg-6">
       <div class="ll-form-row">
         <label class="ll-form-label">Route</label>
@@ -14,9 +13,9 @@
             placeholder="Route"
             class="stretch"
             [clearable]="false"
-            bindLabel="Name"
+            bindLabel="full_route"
             bindValue="ID"
-            [items]="[]">
+            [items]="routes">
           </ng-select>
         </div>
       </div>
@@ -45,9 +44,9 @@
             placeholder="Transport"
             class="stretch"
             [clearable]="false"
-            bindLabel="Name"
+            bindLabel="NumberPlate"
             bindValue="ID"
-            [items]="[]">
+            [items]="vehicles">
           </ng-select>
         </div>
       </div>

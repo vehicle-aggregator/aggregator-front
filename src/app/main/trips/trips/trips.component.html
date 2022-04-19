@@ -58,9 +58,6 @@
       <tr>
         <th>Place from</th>
         <th>Place to</th>
-        <th>Company name</th>
-        <th>Number plate</th>
-        <th>Passenger count</th>
         <th>Ticket bought</th>
         <th>Price</th>
         <th>Start at</th>
@@ -73,10 +70,7 @@
       <tr *ngFor="let route of trips">
         <td>{{ route.PlaceFrom }}</td>
         <td>{{ route.PlaceTo }}</td>
-        <td>{{ route.CompanyName }}</td>
-        <td>{{ route.NumberPlate }}</td>
-        <td>{{ route.PassengerCount }}</td>
-        <td>{{ route.TicketBought }}</td>
+        <td>{{ route.TicketBought }} / {{route.PassengerCount}}</td>
         <td>{{ route.Price }} ₽</td>
         <td>{{ route.StartAt | date: 'yyyy-MM-dd HH:mm' }}</td>
         <td>{{ route.EndAt | date: 'yyyy-MM-dd HH:mm' }}</td>

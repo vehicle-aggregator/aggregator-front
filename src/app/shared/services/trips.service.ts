@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { AuthService } from "../../core/auth.service";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
+import {formDataTransformation} from "../helpers/form-data";
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class TripsService {
       'Token': this.authService.token || '' });
     let options = { headers: headers };
 
-    return this.http.post<any>(`${environment.endPoint}/trip/create`, trip, options)
+    return this.http.post<any>(`${environment.endPoint}/trip/create`, formDataTransformation(trip), options)
   }
 
   findTrips(from: number, to: number): Observable<any> {
