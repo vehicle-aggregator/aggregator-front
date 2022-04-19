@@ -5,7 +5,7 @@
 
     <button class="ll-button outline" (click)="showCreateModal()">
       <mat-icon class="mr-2">add</mat-icon>
-      Create
+      {{getTranslate('Create')}}
     </button>
   </div>
 
@@ -13,10 +13,10 @@
     <table class="ll-table stretch mt-4 mb-3">
       <thead>
       <tr>
-        <th>Number plate</th>
-        <th>Type</th>
-        <th>Passenger count</th>
-        <th>Created at</th>
+        <th>{{getTranslate('Number plate')}}</th>
+        <th>{{getTranslate('Type')}}</th>
+        <th>{{getTranslate('Passenger count')}}</th>
+        <th>{{getTranslate('Created at')}}</th>
         <th></th>
         <th></th>
       </tr>
@@ -31,7 +31,7 @@
         <td width="30"><mat-icon class="delete">delete</mat-icon></td>
       </tr>
       <tr *ngIf="vehicles.length === 0" style="cursor: default">
-        <td colspan="6">No transports found</td>
+        <td colspan="6">{{getTranslate('No transports found')}}}</td>
       </tr>
       </tbody>
     </table>

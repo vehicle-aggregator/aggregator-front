@@ -35,7 +35,7 @@ export class TransportsComponent implements OnInit {
   }
 
   showCreateModal() {
-    const modal = this.modalService.show(CreateTransportComponent, { class: 'modal-lg'});
+    const modal = this.modalService.show(CreateTransportComponent, { initialState: {translate: this.translate}, class: 'modal-lg'});
     modal.content?.isVehicleCreated.subscribe(async (vehicle) => {
       if (vehicle) {
         this.vehicles = await this.vehicleService.getVehicle().toPromise()

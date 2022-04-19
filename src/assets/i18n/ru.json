@@ -8,5 +8,14 @@
   "My account": "Мой аккаунт",
   "My company": "Моя компания",
   "Sign out": "Выйти",
-  "Language": "Язык"
+  "Language": "Язык",
+  "Create": "Создать",
+  "Number plate": "Номерной знак",
+  "Type": "Тип транспорта",
+  "Passenger count": "Количество мест",
+  "Created at": "Дата создания",
+  "No transports found": "Транспортные средства не найдены",
+  "Vehicle category": "Тип транспорта",
+  "Create transport": "Создать транспортное средство",
+  "Cancel": "Отмена"
 }

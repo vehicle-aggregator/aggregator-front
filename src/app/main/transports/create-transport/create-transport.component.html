@@ -1,29 +1,29 @@
 <div class="p-4">
   <p class="h4 mt-0 d-flex align-items-center justify-content-center" style="color: #808080">
-    Create transport
+    {{getTranslate('Create transport')}}
   </p>
 
   <form [formGroup]="form" class="ll-form ll-form-big">
     <div class="ll-form-row">
-      <label class="ll-form-label">Number plate</label>
+      <label class="ll-form-label">{{getTranslate('Number plate')}}</label>
       <div class="ll-form-control" ll-form-error>
-        <input type="text" formControlName="number_plate" class="ll-input stretch" placeholder="Number plate">
+        <input type="text" formControlName="number_plate" class="ll-input stretch" [placeholder]="getTranslate('Number plate')">
       </div>
     </div>
 
     <div class="ll-form-row">
-      <label class="ll-form-label">Passenger count</label>
+      <label class="ll-form-label">{{getTranslate('Passenger count')}}</label>
       <div class="ll-form-control" ll-form-error>
-        <input type="text" formControlName="passengerCount" class="ll-input stretch" placeholder="Passenger count">
+        <input type="text" formControlName="passengerCount" class="ll-input stretch" [placeholder]="getTranslate('Passenger count')">
       </div>
     </div>
 
     <div class="ll-form-row">
-      <label class="ll-form-label">Vehicle category</label>
+      <label class="ll-form-label">{{getTranslate('Vehicle category')}}</label>
       <div class="ll-form-control" ll-form-error>
         <ng-select
           formControlName="vehicleCategoryID"
-          placeholder="Vehicle category"
+          [placeholder]="getTranslate('Vehicle category')"
           class="stretch"
           [clearable]="false"
           bindLabel="Name"
@@ -34,8 +34,8 @@
     </div>
 
     <div class="d-flex justify-content-end">
-      <button type="submit" class="ll-button outline" (click)="bsModalRef.hide()">Cancel</button>
-      <button type="submit" class="ll-button fill ml-2" (click)="submit()">Create transport</button>
+      <button type="submit" class="ll-button outline" (click)="bsModalRef.hide()">{{getTranslate('Cancel')}}</button>
+      <button type="submit" class="ll-button fill ml-2" (click)="submit()">{{getTranslate('Create transport')}}</button>
     </div>
   </form>
 </div>
