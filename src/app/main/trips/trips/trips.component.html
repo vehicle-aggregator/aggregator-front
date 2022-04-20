@@ -10,12 +10,13 @@
   </div>
 
   <div class="white-block mt-4">
-    <form class="d-flex align-items-center">
+    <form [formGroup]="form" class="d-flex align-items-center">
 
       <div class="ll-form-row mr-2" style="flex: 1">
         <label class="ll-form-label">From</label>
         <div class="ll-form-control" ll-form-error>
           <ng-select
+            formControlName="from"
             placeholder="From"
             class="stretch"
             [clearable]="false"
@@ -30,6 +31,7 @@
         <label class="ll-form-label">To</label>
         <div class="ll-form-control" ll-form-error>
           <ng-select
+            formControlName="to"
             placeholder="To"
             class="stretch"
             [clearable]="false"
@@ -43,13 +45,13 @@
       <div class="ll-form-row mr-2" style="flex: 1">
         <label class="ll-form-label">Date</label>
         <div class="ll-form-control" ll-form-error>
-          <input type="text" class="ll-input stretch" placeholder="Date">
+          <input type="text" formControlName="date" class="ll-input stretch" placeholder="Date">
         </div>
       </div>
 
       <div class="d-flex">
-        <button type="submit" class="ll-button fill mr-2">Find</button>
-        <button type="submit" class="ll-button outline">Reset</button>
+        <button type="submit" class="ll-button fill mr-2" (click)="find()">Find</button>
+        <button type="submit" class="ll-button outline" (click)="reset()">Reset</button>
       </div>
     </form>
 

@@ -16,16 +16,8 @@ export class CreateRouteComponent extends FormComponent implements OnInit {
   @Input() places: PlaceModel[] = []
   isRouteCreated = new EventEmitter();
 
-  //@ts-ignore
-  form = this.fb.group({
-    from : [null, [Validators.required]],
-    to : [null, [Validators.required]],
-    active_from: [null, [Validators.required]],
-  });
-
   constructor(
     public bsModalRef: BsModalRef,
-    private fb: FormBuilder,
     private routesService: RoutesService,
   ) { super() }
 

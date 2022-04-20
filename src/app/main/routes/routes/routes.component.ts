@@ -6,6 +6,7 @@ import { PlacesService } from "../../../shared/services/places.service";
 import { PlaceModel } from "../../../shared/models/place.model";
 import {BsModalService} from "ngx-bootstrap/modal";
 import {CreateRouteComponent} from "../create-route/create-route.component";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-routes',
@@ -16,10 +17,18 @@ export class RoutesComponent implements OnInit {
   routes: RouteModel[] = []
   places: PlaceModel[] = []
 
+  //@ts-ignore
+  form = this.fb.group({
+    from : [null, [Validators.required]],
+    to : [null, [Validators.required]],
+    active_from: [null, [Validators.required]],
+  });
+
   constructor(
     public translate: TranslateService,
     private routesService: RoutesService,
     private modalService: BsModalService,
+    private fb: FormBuilder,
     private placesService: PlacesService,
   ) { }
 
