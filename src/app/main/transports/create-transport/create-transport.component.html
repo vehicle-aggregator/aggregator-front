@@ -12,13 +12,6 @@
     </div>
 
     <div class="ll-form-row">
-      <label class="ll-form-label">{{getTranslate('Passenger count')}}</label>
-      <div class="ll-form-control" ll-form-error>
-        <input type="text" formControlName="passengerCount" class="ll-input stretch" [placeholder]="getTranslate('Passenger count')">
-      </div>
-    </div>
-
-    <div class="ll-form-row">
       <label class="ll-form-label">{{getTranslate('Vehicle category')}}</label>
       <div class="ll-form-control" ll-form-error>
         <ng-select
@@ -33,7 +26,11 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-end">
+    <div class="overflow-auto pr-4 pl-4">
+      <app-bus></app-bus>
+    </div>
+
+    <div class="d-flex justify-content-end mt-4">
       <button type="submit" class="ll-button outline" (click)="bsModalRef.hide()">{{getTranslate('Cancel')}}</button>
       <button type="submit" class="ll-button fill ml-2" (click)="submit()">{{getTranslate('Create transport')}}</button>
     </div>

@@ -18,3 +18,10 @@ export class VehicleModel {
   PlacesBus: any;
   UpdatedAt: Date;
 }
+
+export class BusPlace {
+  BusColumn: number;
+  BusRaw: number;
+  PlaceNum: number;
+  Busy?: boolean;
+}
