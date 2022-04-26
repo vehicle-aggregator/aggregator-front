@@ -6,6 +6,8 @@ import { HttpErrorResponse } from "@angular/common/http";
 import {FormComponent} from "../../../shared/form/form.component";
 import { NumberValidator, NumberPlate } from 'src/app/shared/validators/validators';
 import {TranslateService} from "@ngx-translate/core";
+import {BusPlace} from "../../../shared/models/vehicle.model";
+import {big, especiallyBig, especiallySmall, middle, small} from "../../../shared/resources/bus";
 
 @Component({
   selector: 'app-create-transport',
@@ -18,11 +20,11 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
 
   vehicleTypes: any[];
   isVehicleCreated = new EventEmitter();
+  bus: BusPlace[] = []
 
   //@ts-ignore
   form = this.fb.group({
     number_plate : [null, [Validators.required, NumberPlate]],
-    passengerCount : [null, [Validators.required, NumberValidator]],
     vehicleCategoryID  : [null, [Validators.required]],
   });
 
@@ -39,7 +41,7 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
   submit() {
     if (!this.checkForm()) return;
 
-    this.vehicleService.createVehicle({ ...this.form.value, companyID: 1 }).subscribe(
+    this.vehicleService.createVehicle({ ...this.form.value, passengerCount: this.bus.length, companyID: 1 }).subscribe(
       data => {
         this.isVehicleCreated.emit(data)
         this.bsModalRef.hide()
@@ -56,5 +58,10 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
 
   getTranslate(kye: string) {
     return this.translate.instant(kye)
+  }
+
+  changeVehicle(type: any) {
+    const buses = [especiallySmall, small, middle, big, especiallyBig];
+    this.bus = buses[type.ID - 1];
   }
 }

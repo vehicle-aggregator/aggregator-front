@@ -21,13 +21,14 @@
           [clearable]="false"
           bindLabel="Name"
           bindValue="ID"
+          (change)="changeVehicle($event)"
           [items]="vehicleTypes">
         </ng-select>
       </div>
     </div>
 
-    <div class="overflow-auto pr-4 pl-4">
-      <app-bus></app-bus>
+    <div *ngIf="bus.length > 0" class="d-flex justify-content-center overflow-auto">
+      <app-bus class="overflow-auto" [busPlaces]="bus"></app-bus>
     </div>
 
     <div class="d-flex justify-content-end mt-4">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BusPlace} from "../../../shared/models/vehicle.model";
 import {especiallySmall} from "../../../shared/resources/bus";
 
@@ -7,9 +7,9 @@ import {especiallySmall} from "../../../shared/resources/bus";
   templateUrl: './bus.component.html',
   styleUrls: ['./bus.component.less']
 })
-export class BusComponent implements OnInit {
+export class BusComponent implements OnChanges {
 
-  busPlaces: BusPlace[] = especiallySmall
+  @Input() busPlaces: BusPlace[]
 
   maxColumn: number = 0
   maxRaw: number = 0
@@ -19,7 +19,7 @@ export class BusComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     this.maxColumn = Math.max.apply(null, this.busPlaces.map(item => item.BusColumn))
     this.maxRaw = Math.max.apply(null, this.busPlaces.map(item => item.BusRaw))
 
