@@ -1,0 +1,21 @@
+<form #dateForm="ngForm" class="ll-datepicker">
+  <input
+    #input
+    [ngModel]="dateString"
+    name="dateField"
+    class="ll-input stretch date"
+    placeholder="{{ placeholder }}"
+    (click)="!disabled && dp.show()"
+    [disabled]="disabled"
+    autocomplete="off">
+  <input
+    class="ll-datepicker-hidden"
+    #dp="bsDatepicker"
+    bsDatepicker
+    [placement]="placement"
+    [(ngModel)]="date"
+    [ngModelOptions]="{standalone: true}"
+    [bsConfig]="bsConfig"
+    [maxDate]="maxDate"
+    [minDate]="minDate">
+</form>
