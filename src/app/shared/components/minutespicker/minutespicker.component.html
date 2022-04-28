@@ -1,0 +1,13 @@
+<input
+  #input
+  class="ll-input form-control"
+  [class.invalid]="invalid"
+  [(ngModel)]="time"
+  type="text"
+  autocomplete="off"
+  [maxlength]="maxlength"
+  [imask]="mask"
+  placeholder="00:00"
+  (blur)="onBlur()"
+  [disabled]="disabled"
+>
