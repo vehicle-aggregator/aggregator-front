@@ -7,13 +7,22 @@ import { FileLoaderComponent } from './components/file-loader/file-loader.compon
 import { SafePipe, SafeUrlPipe } from './pipes/safe.pipe';
 import { FormErrorDirective } from './directives/form-error.directive';
 import {TranslateService} from "@ngx-translate/core";
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import {IMaskDirectiveModule} from "angular-imask";
+import {BsDatepickerModule, DatepickerModule} from "ngx-bootstrap/datepicker";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {ModalModule} from "ngx-bootstrap/modal";
+import {IMaskModule} from "angular-imask";
+import { MinutespickerComponent } from './components/minutespicker/minutespicker.component';
 
 @NgModule({
   declarations: [
     SafePipe,
     SafeUrlPipe,
     FormErrorDirective,
-    FileLoaderComponent
+    FileLoaderComponent,
+    DatepickerComponent,
+    MinutespickerComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +30,12 @@ import {TranslateService} from "@ngx-translate/core";
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    IMaskDirectiveModule,
+    DatepickerModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    NgxSpinnerModule,
+    IMaskModule,
+    ModalModule.forRoot()
   ],exports: [
     CommonModule,
     SafePipe,
@@ -30,9 +45,13 @@ import {TranslateService} from "@ngx-translate/core";
     ReactiveFormsModule,
     FileLoaderComponent,
     FormErrorDirective,
+    DatepickerComponent,
     NgSelectModule,
+    NgxSpinnerModule,
+    MinutespickerComponent,
+    IMaskModule,
   ], providers: [
-    TranslateService
+    TranslateService,
   ]
 })
 export class SharedModule { }

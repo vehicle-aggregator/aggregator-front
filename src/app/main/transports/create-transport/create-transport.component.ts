@@ -8,6 +8,7 @@ import { NumberValidator, NumberPlate } from 'src/app/shared/validators/validato
 import {TranslateService} from "@ngx-translate/core";
 import {BusPlace} from "../../../shared/models/vehicle.model";
 import {big, especiallyBig, especiallySmall, middle, small} from "../../../shared/resources/bus";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-create-transport',
@@ -32,6 +33,7 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
     private fb: FormBuilder,
     private vehicleService: VehicleService,
     public bsModalRef: BsModalRef,
+    private spinner: NgxSpinnerService,
   ) { super() }
 
   ngOnInit(): void {
@@ -41,12 +43,15 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
   submit() {
     if (!this.checkForm()) return;
 
+    this.spinner.show()
+
     this.vehicleService.createVehicle({ ...this.form.value, passengerCount: this.bus.length, companyID: 1 }).subscribe(
       data => {
         this.isVehicleCreated.emit(data)
         this.bsModalRef.hide()
       },
-      error => this.handleError(error)
+      error => this.handleError(error),
+      () => this.spinner.hide()
     )
   }
 

@@ -5,6 +5,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {Company} from "../../../shared/models/company.model";
 import {FormComponent} from "../../../shared/form/form.component";
 import {Router} from "@angular/router";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-create-company',
@@ -24,6 +25,7 @@ export class CreateCompanyComponent extends FormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private companyService: CompanyService,
+    private spinner: NgxSpinnerService,
     private router: Router
   ) { super() }
 
@@ -33,21 +35,27 @@ export class CreateCompanyComponent extends FormComponent implements OnInit {
   async submit() {
     if (!this.checkForm()) return;
 
+    this.spinner.show();
+
     const business = sessionStorage.getItem('uid') ?
       await this.companyService.getBusinessAccount(Number(sessionStorage.getItem('uid'))).toPromise() :
       await this.companyService.createBusinessAccount().toPromise()
 
+    console.log(business)
     if (business) {
       try {
         sessionStorage.setItem('uid', business.BusinessUser[0].Uid);
         const companyInfo: Company = this.getCompany(business)
         const company = await this.companyService.createCompany(companyInfo).toPromise()
         if (company) await this.router.navigateByUrl('');
+        sessionStorage.setItem('status', 'create-account')
       } catch (e) {
         // @ts-ignore
         this.handleError(e)
       }
     }
+
+    this.spinner.hide();
   }
 
   handleError(res: HttpErrorResponse) {

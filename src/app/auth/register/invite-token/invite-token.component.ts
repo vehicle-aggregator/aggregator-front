@@ -5,6 +5,7 @@ import {CompanyService} from "../../../shared/services/company.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Company} from "../../../shared/models/company.model";
 import {Router} from "@angular/router";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-invite-token',
@@ -21,6 +22,7 @@ export class InviteTokenComponent extends FormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private spinner: NgxSpinnerService,
     private companyService: CompanyService
   ) { super(); }
 
@@ -32,13 +34,17 @@ export class InviteTokenComponent extends FormComponent implements OnInit {
     if (!this.checkForm()) return;
 
     try {
+      this.spinner.show();
+
       const company = await this.companyService.companyConnect(this.value('code')).toPromise()
       if (company) await this.router.navigateByUrl('');
+      sessionStorage.setItem('status', 'create-account')
     } catch (e) {
-      console.log(e)
       // @ts-ignore
       this.handleError(e)
     }
+
+    this.spinner.hide();
   }
 
   handleError(res: HttpErrorResponse) {

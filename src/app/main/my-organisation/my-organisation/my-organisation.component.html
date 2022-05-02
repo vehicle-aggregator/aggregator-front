@@ -1,4 +1,4 @@
-<div style="width: 70vw;" class="mt-4">
+<div style="width: 70vw;" class="mt-4" *ngIf="company">
   <div class="d-flex justify-content-between align-items-center">
     <a class="h3" style="color: #808080">{{getTranslate('My company')}}</a>
 
@@ -76,3 +76,5 @@
     </div>
   </div>
 </div>
+
+<ngx-spinner bdColor="" size="medium" color="#988aac" type="ball-beat"></ngx-spinner>

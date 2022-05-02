@@ -35,9 +35,16 @@
     </div>
 
     <div class="ll-form-row">
-      <label class="ll-form-label">Active form</label>
+      <label class="ll-form-label">Active from date</label>
       <div class="ll-form-control" ll-form-error>
-        <input type="text" formControlName="active_from" class="ll-input stretch" placeholder="Active form">
+        <app-datepicker formControlName="active_from_date" placeholder="Active from date"></app-datepicker>
+      </div>
+    </div>
+
+    <div class="ll-form-row">
+      <label class="ll-form-label">Active from time</label>
+      <div class="ll-form-control" ll-form-error>
+        <app-minutespicker formControlName="active_from_time" format="string"></app-minutespicker>
       </div>
     </div>
 
@@ -47,3 +54,5 @@
     </div>
   </form>
 </div>
+
+<ngx-spinner bdColor="" size="medium" color="#988aac" type="ball-beat" name="create" [fullScreen]="false"></ngx-spinner>

@@ -10,6 +10,8 @@ import {PlaceModel} from "../../../shared/models/place.model";
 import {PlacesService} from "../../../shared/services/places.service";
 import {TripsService} from "../../../shared/services/trips.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {NumberValidator} from "../../../shared/validators/validators";
+import {formatDate} from "../../../shared/helpers/format-date";
 
 @Component({
   selector: 'app-create-trip',
@@ -28,9 +30,11 @@ export class CreateTripComponent extends FormComponent implements OnInit {
     routeId: [null, [Validators.required]],
     vehicleId: [null, [Validators.required]],
     description: [null, [Validators.required]],
-    price: [null, [Validators.required]],
-    departure: [null, [Validators.required]],
-    arrival: [null, [Validators.required]],
+    price: [null, [Validators.required, NumberValidator]],
+    departure_date: [null, [Validators.required]],
+    departure_time: [null, [Validators.required]],
+    arrival_date: [null, [Validators.required]],
+    arrival_time: [null, [Validators.required]],
   });
 
   constructor(
@@ -58,7 +62,14 @@ export class CreateTripComponent extends FormComponent implements OnInit {
   submit() {
     if (!this.checkForm()) return;
 
-    this.tripsService.createTrip(this.form.value).subscribe(
+    this.tripsService.createTrip({
+      routeId: this.value('routeId'),
+      vehicleId: this.value('vehicleId'),
+      description: this.value('description'),
+      price: this.value('price'),
+      departure: `${formatDate(this.value('departure_date'))} ${this.value('departure_time')}`,
+      arrival: `${formatDate(this.value('arrival_date'))} ${this.value('arrival_time')}`,
+    }).subscribe(
       data => {
         this.isTripCreated.emit(data)
         this.bsModalRef.hide()

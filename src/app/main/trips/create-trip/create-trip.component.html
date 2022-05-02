@@ -28,9 +28,16 @@
       </div>
 
       <div class="ll-form-row">
-        <label class="ll-form-label">Departure</label>
+        <label class="ll-form-label">Departure date</label>
         <div class="ll-form-control" ll-form-error>
-          <input type="text" formControlName="departure" class="ll-input stretch" placeholder="Departure">
+          <app-datepicker formControlName="departure_date" placeholder="Departure date"></app-datepicker>
+        </div>
+      </div>
+
+      <div class="ll-form-row">
+        <label class="ll-form-label">Departure time</label>
+        <div class="ll-form-control" ll-form-error>
+          <app-minutespicker formControlName="departure_time" format="string"></app-minutespicker>
         </div>
       </div>
     </div>
@@ -59,9 +66,16 @@
       </div>
 
       <div class="ll-form-row">
-        <label class="ll-form-label">Arrival</label>
+        <label class="ll-form-label">Arrival date</label>
         <div class="ll-form-control" ll-form-error>
-          <input type="text" formControlName="arrival" class="ll-input stretch" placeholder="Arrival">
+          <app-datepicker formControlName="arrival_date" placeholder="Arrival date"></app-datepicker>
+        </div>
+      </div>
+
+      <div class="ll-form-row">
+        <label class="ll-form-label">Arrival time</label>
+        <div class="ll-form-control" ll-form-error>
+          <app-minutespicker format="string" formControlName="arrival_time"></app-minutespicker>
         </div>
       </div>
     </div>

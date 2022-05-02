@@ -7,6 +7,7 @@ import { PlaceModel } from "../../../shared/models/place.model";
 import {BsModalService} from "ngx-bootstrap/modal";
 import {CreateRouteComponent} from "../create-route/create-route.component";
 import {FormBuilder, Validators} from "@angular/forms";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-routes',
@@ -29,12 +30,22 @@ export class RoutesComponent implements OnInit {
     private routesService: RoutesService,
     private modalService: BsModalService,
     private fb: FormBuilder,
+    private spinner: NgxSpinnerService,
     private placesService: PlacesService,
   ) { }
 
-  ngOnInit(): void {
-    this.routesService.getRoutes().subscribe(data => this.routes = data)
-    this.placesService.getPlaces().subscribe(data => this.places = data)
+  async ngOnInit() {
+    this.spinner.show()
+
+    const [places, routes] = await Promise.all([
+      this.placesService.getPlaces().toPromise(),
+      this.routesService.getRoutes().toPromise()
+    ])
+
+    this.places = places
+    this.routes = routes
+
+    this.spinner.hide()
   }
 
   getTranslate(kye: string) {

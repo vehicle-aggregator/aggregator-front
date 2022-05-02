@@ -8,6 +8,8 @@ import {BsModalService} from "ngx-bootstrap/modal";
 import {CreateTripComponent} from "../create-trip/create-trip.component";
 import {FormBuilder, Validators} from "@angular/forms";
 import {FormComponent} from "../../../shared/form/form.component";
+import {NgxSpinnerService} from "ngx-spinner";
+import {formatDate} from "../../../shared/helpers/format-date";
 
 @Component({
   selector: 'app-trips',
@@ -31,12 +33,22 @@ export class TripsComponent extends FormComponent implements OnInit {
     private tripsService: TripsService,
     private modalService: BsModalService,
     private fb: FormBuilder,
+    private spinner: NgxSpinnerService,
     private placesService: PlacesService,
   ) { super() }
 
-  ngOnInit(): void {
-    this.tripsService.getTrips().subscribe(data => this.trips = data)
-    this.placesService.getPlaces().subscribe(data => this.places = data)
+  async ngOnInit() {
+    this.spinner.show()
+
+    const [trips, places] = await Promise.all([
+      this.tripsService.getTrips().toPromise(),
+      this.placesService.getPlaces().toPromise()
+    ])
+
+    this.trips = trips
+    this.places = places
+
+    this.spinner.hide()
   }
 
   getTranslate(kye: string) {
@@ -55,7 +67,7 @@ export class TripsComponent extends FormComponent implements OnInit {
   async find() {
     if (!this.checkForm()) return;
 
-    this.trips = await this.tripsService.findTrips(this.value('from'), this.value('to'), this.value('date')).toPromise()
+    this.trips = await this.tripsService.findTrips(this.value('from'), this.value('to'), formatDate(this.value('date'))).toPromise()
   }
 
   async reset() {

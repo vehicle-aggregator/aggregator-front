@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {CompanyService} from "../../../shared/services/company.service";
 import {FullCompanyModel} from "../../../shared/models/company.model";
+import {NgxSpinnerService} from "ngx-spinner";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-my-organisation',
@@ -13,11 +15,17 @@ export class MyOrganisationComponent implements OnInit {
 
   constructor(
     public translate: TranslateService,
+    private spinner: NgxSpinnerService,
     private companyService: CompanyService
   ) { }
 
   async ngOnInit() {
-    this.company = await this.companyService.getCompanyById(1).toPromise()
+    this.spinner.show()
+
+    await this.companyService.getCompanyById(1).pipe(finalize(() => this.spinner.hide())).subscribe(
+      company => this.company = company,
+      error => {},
+    )
   }
 
   getTranslate(kye: string) {

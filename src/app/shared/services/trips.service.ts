@@ -40,7 +40,7 @@ export class TripsService {
     return this.http.post<any>(`${environment.endPoint}/trip/create`, formDataTransformation(trip), options)
   }
 
-  findTrips(from: number, to: number, date: string): Observable<any> {
+  findTrips(from: number, to: number, date: string | null): Observable<any> {
     let headers = new HttpHeaders({
       'Token': this.authService.token || '' });
     let options = { headers: headers };

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EmailValidator, PasswordValidator, setError} from "../../../shared/validators/validators";
 import {AuthService} from "../../../core/auth.service";
@@ -7,6 +7,7 @@ import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {FormComponent} from "../../../shared/form/form.component";
+import {formatDate} from "../../../shared/helpers/format-date";
 
 @Component({
   selector: 'app-create-account',
@@ -47,7 +48,7 @@ export class CreateAccountComponent extends FormComponent {
     try {
       const newUser = this.form.value;
       delete newUser['confirmPassword']
-      user = await this.authService.register(newUser).toPromise()
+      user = await this.authService.register({ ...newUser, birthday: formatDate(newUser.birthday) }).toPromise()
     } catch (e) {
       // @ts-ignore
       this.handleError(e)
