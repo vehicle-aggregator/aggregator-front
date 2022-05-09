@@ -22,7 +22,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
     }),
     ToastrModule.forRoot({
       timeOut: 3000,
-      positionClass: 'toast-bottom-center',
+      positionClass: 'toast-top-right',
       closeButton: true
     }),
     BsDropdownModule.forRoot(),

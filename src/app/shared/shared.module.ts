@@ -14,6 +14,7 @@ import {NgxSpinnerModule} from "ngx-spinner";
 import {ModalModule} from "ngx-bootstrap/modal";
 import {IMaskModule} from "angular-imask";
 import { MinutespickerComponent } from './components/minutespicker/minutespicker.component';
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [

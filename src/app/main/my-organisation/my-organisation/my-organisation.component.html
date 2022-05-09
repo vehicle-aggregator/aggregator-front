@@ -59,7 +59,7 @@
           <label class="h4">Invitation</label>
 
           <div class="ll-form-buttons mt-0">
-            <button class="ll-button outline" [cdkCopyToClipboard]="company?.inviteCode || ''">
+            <button class="ll-button outline" (click)="showToastr()" [cdkCopyToClipboard]="company?.inviteCode || ''">
               <mat-icon class="mr-2">content_copy</mat-icon>
               Copy
             </button>

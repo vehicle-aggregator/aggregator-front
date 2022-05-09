@@ -8,6 +8,7 @@ import {BsModalService} from "ngx-bootstrap/modal";
 import {CreateRouteComponent} from "../create-route/create-route.component";
 import {FormBuilder, Validators} from "@angular/forms";
 import {NgxSpinnerService} from "ngx-spinner";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-routes',
@@ -32,11 +33,11 @@ export class RoutesComponent implements OnInit {
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
     private placesService: PlacesService,
+    private toastr: ToastrService,
   ) { }
 
   async ngOnInit() {
     this.spinner.show()
-
     const [places, routes] = await Promise.all([
       this.placesService.getPlaces().toPromise(),
       this.routesService.getRoutes().toPromise()

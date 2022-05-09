@@ -4,6 +4,7 @@ import {CompanyService} from "../../../shared/services/company.service";
 import {FullCompanyModel} from "../../../shared/models/company.model";
 import {NgxSpinnerService} from "ngx-spinner";
 import {finalize} from "rxjs";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-my-organisation',
@@ -16,6 +17,7 @@ export class MyOrganisationComponent implements OnInit {
   constructor(
     public translate: TranslateService,
     private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
     private companyService: CompanyService
   ) { }
 
@@ -30,5 +32,9 @@ export class MyOrganisationComponent implements OnInit {
 
   getTranslate(kye: string) {
     return this.translate.instant(kye)
+  }
+
+  showToastr() {
+    this.toastr.success(this.translate.instant('The invitation was copied successfully'))
   }
 }

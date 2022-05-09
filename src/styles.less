@@ -632,3 +632,37 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .theme-dark-blue .bs-datepicker-head {
   background-color: @primary-color;
 }
+
+#toast-container > .toast-success {
+  background-image: url(/assets/icons/success.svg) !important;
+  box-shadow: 0 8px 16px rgba(40, 167, 69, 0.3);
+}
+
+#toast-container > .toast-error {
+  background-image: url(/assets/icons/warning.svg) !important;
+  box-shadow: 0 8px 16px rgba(220, 53, 69, 0.3);
+}
+
+#toast-container > .toast-info {
+  background-image: url(/assets/icons/info.svg) !important;
+  box-shadow: 0 8px 16px rgba(23, 162, 184, 0.3);
+}
+
+#toast-container > .ngx-toastr {
+  background-color: @white-color;
+  background-size: 16px;
+  color: @black-color;
+  width: 400px;
+  border-radius: 8px;
+  border: 1px solid @whitesmoke-color;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 8px 15px 8px 40px;
+}
+
+button.toast-close-button {
+  color: @gainsboro-color;
+  top: -1px;
+  font-size: 24px;
+  right: 0;
+}
