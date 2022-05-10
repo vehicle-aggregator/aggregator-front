@@ -43,7 +43,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'dashboard',
+        redirectTo: 'my-account',
         pathMatch: 'full'
       }
     ]

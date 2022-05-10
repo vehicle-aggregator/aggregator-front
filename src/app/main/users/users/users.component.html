@@ -24,8 +24,8 @@
           </td>
           <td>{{ user.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
           <td width="30">
-            <button *ngIf="!user.BusinessUser[0].Ban" class="ll-button danger stretch">Block</button>
-            <button *ngIf="user.BusinessUser[0].Ban" class="ll-button outline stretch">Unblock</button>
+            <button *ngIf="!user.BusinessUser[0].Ban" class="ll-button danger stretch" (click)="showBlockModal(user)">Block</button>
+            <button *ngIf="user.BusinessUser[0].Ban" class="ll-button outline stretch" (click)="showUnblockModal()">Unblock</button>
           </td>
         </tr>
         <tr *ngIf="users?.length === 0" style="cursor: default">

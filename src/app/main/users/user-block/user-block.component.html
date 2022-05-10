@@ -1,0 +1,11 @@
+<div class="p-4">
+  <p class="h4 mt-0 d-flex align-items-center justify-content-center" style="color: #808080">
+    Block user
+  </p>
+  <h3 class="text-center mt-4">Are you sure you want to block a user with an email address: <b>{{ email }}</b>?</h3>
+
+  <div class="ll-form-buttons mt-0">
+    <button type="button" class="ll-button outline" (click)="bsModalRef.hide()">Cancel</button>
+    <button type="submit" class="ll-button danger invitation-btn" (click)="isUserBlocked.emit()">Block</button>
+  </div>
+</div>
