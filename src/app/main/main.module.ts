@@ -3,7 +3,6 @@ import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-import { BrowserModule } from '@angular/platform-browser';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main/main.component';
 import { TopbarComponent } from './topbar/topbar.component';

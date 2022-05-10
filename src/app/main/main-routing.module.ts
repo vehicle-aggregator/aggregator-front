@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './main/main.component';
+import {MenuItemUrl} from "../shared/models/menu-item";
 
 const routes: Routes = [
   {
@@ -17,23 +18,27 @@ const routes: Routes = [
         loadChildren: () => import('./my-organisation/my-organisation.module').then(m => m.MyOrganisationModule)
       },
       {
-        path: 'dashboard',
+        path: MenuItemUrl.Dashboard,
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
-        path: 'users',
+        path: MenuItemUrl.Users,
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
       },
       {
-        path: 'transports',
+        path: MenuItemUrl.Companies,
+        loadChildren: () => import('./companies/companies.module').then(m => m.CompaniesModule)
+      },
+      {
+        path: MenuItemUrl.Transports,
         loadChildren: () => import('./transports/transports.module').then(m => m.TransportsModule)
       },
       {
-        path: 'routes',
+        path: MenuItemUrl.Routes,
         loadChildren: () => import('./routes/routes.module').then(m => m.RoutesModule)
       },
       {
-        path: 'trips',
+        path: MenuItemUrl.Trips,
         loadChildren: () => import('./trips/trips.module').then(m => m.TripsModule)
       },
       {

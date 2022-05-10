@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li *ngFor="let item of menu" class="nav-item active">
-        <a class="nav-link align-items-end" [routerLink]="item.link" translate>
+        <a *ngIf="role === item.role" class="nav-link align-items-end" [routerLink]="item.link" translate>
           <mat-icon class="mr-1">{{item.icon}}</mat-icon>{{item.name}}</a>
       </li>
     </ul>
@@ -41,7 +41,7 @@
           <mat-icon class="mr-2">person</mat-icon>
           My account
         </button>
-        <button routerLink="my-company" class="dropdown-item" type="button" translate>
+        <button *ngIf="role === 'user'" routerLink="my-company" class="dropdown-item" type="button" translate>
           <mat-icon class="mr-2">business</mat-icon>
           My company
         </button>

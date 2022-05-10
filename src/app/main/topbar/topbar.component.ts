@@ -44,4 +44,8 @@ export class TopbarComponent implements OnInit {
     this.authService.logout()
     this.router.navigateByUrl('auth/login');
   }
+
+  get role(): 'admin' | 'user' {
+    return this.authService.role;
+  }
 }

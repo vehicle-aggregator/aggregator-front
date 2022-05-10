@@ -74,4 +74,9 @@ export class AuthService {
     let options = { headers: headers };
     return this.http.get(`${environment.endPoint}/user/${this.userId}`, options);
   }
+
+  get role(): 'admin' | 'user' {
+    // TODO change logic
+    return sessionStorage.getItem('email') === 'admin@fakemail.xxx' ?  'admin' : 'user';
+  }
 }
