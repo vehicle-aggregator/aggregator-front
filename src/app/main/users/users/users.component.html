@@ -1,5 +1,40 @@
 <div style="width: 70vw;" class="mt-4">
   <a class="h3" style="color: #808080">{{getTranslate('Users')}}</a>
 
-  <div class="white-block mt-4"></div>
+  <div class="white-block mt-4">
+    <div style="height: 50vh; overflow: auto">
+      <table class="ll-table stretch mb-3">
+        <thead>
+        <tr>
+          <th>User name</th>
+          <th>E-mail</th>
+          <th>Status</th>
+          <th>Date of registration</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.last_name }} {{user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td class="d-flex">
+            <mat-icon *ngIf="user.BusinessUser[0].Ban" class="delete mr-2">block</mat-icon>
+            <mat-icon *ngIf="!user.BusinessUser[0].Ban" class="success mr-2">task_alt</mat-icon>
+            {{ user.BusinessUser[0].Ban ? 'Blocked' : 'Active' }}
+          </td>
+          <td>{{ user.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
+          <td width="30">
+            <button *ngIf="!user.BusinessUser[0].Ban" class="ll-button danger stretch">Block</button>
+            <button *ngIf="user.BusinessUser[0].Ban" class="ll-button outline stretch">Unblock</button>
+          </td>
+        </tr>
+        <tr *ngIf="users?.length === 0" style="cursor: default">
+          <td colspan="5">No users found</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
+<ngx-spinner bdColor="" size="medium" color="#988aac" type="ball-beat"></ngx-spinner>

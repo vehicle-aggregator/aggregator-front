@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { AuthService } from "../../core/auth.service";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
-import {formDataTransformation} from "../helpers/form-data";
+import { formDataTransformation } from "../helpers/form-data";
 
 @Injectable({
   providedIn: 'root'
