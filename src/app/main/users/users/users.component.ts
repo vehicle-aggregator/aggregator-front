@@ -16,7 +16,6 @@ import {ToastrService} from "ngx-toastr";
 export class UsersComponent implements OnInit {
   users: User[] = []
 
-
   constructor(
     public translate: TranslateService,
     public spinner: NgxSpinnerService,
@@ -36,13 +35,16 @@ export class UsersComponent implements OnInit {
   showBlockModal(user: User) {
     const modal = this.modalService.show(UserBlockComponent, { initialState: {email: user.email}, class: 'modal-540' });
     modal.content?.isUserBlocked.subscribe(async () => {
-      this.usersService.banBusinessUsers(user.ID).subscribe(
-        () => {
-          this.loadUser();
-          this.toastr.success('The user was blocked successfully');
-        },
-        error => this.toastr.error(error.error)
-      )
+      try {
+        await this.usersService.banBusinessUsers(user.BusinessUser[0].ID).toPromise()
+        this.loadUser();
+        this.toastr.success('The user was blocked successfully');
+        modal.hide()
+      } catch (error) {
+        console.error(error)
+        // @ts-ignore
+        this.toastr.error(error.error)
+      }
     });
   }
 

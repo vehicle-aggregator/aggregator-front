@@ -17,12 +17,12 @@
         <tr *ngFor="let user of users">
           <td>{{ user.last_name }} {{user.name }}</td>
           <td>{{ user.email }}</td>
+          <td>{{ user.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
           <td class="d-flex">
             <mat-icon *ngIf="user.BusinessUser[0].Ban" class="delete mr-2">block</mat-icon>
             <mat-icon *ngIf="!user.BusinessUser[0].Ban" class="success mr-2">task_alt</mat-icon>
             {{ user.BusinessUser[0].Ban ? 'Blocked' : 'Active' }}
           </td>
-          <td>{{ user.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
           <td width="30">
             <button *ngIf="!user.BusinessUser[0].Ban" class="ll-button danger stretch" (click)="showBlockModal(user)">Block</button>
             <button *ngIf="user.BusinessUser[0].Ban" class="ll-button outline stretch" (click)="showUnblockModal()">Unblock</button>

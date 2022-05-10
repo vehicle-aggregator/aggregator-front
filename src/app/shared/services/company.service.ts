@@ -54,4 +54,12 @@ export class CompanyService {
     let options = { headers: headers };
     return this.http.post<any>(`${environment.endPoint}/company/connect`, formDataTransformation({ invite_code: code }) , options);
   }
+
+  getCompanies(): Observable<any> {
+    let headers = new HttpHeaders({
+      'Token': this.authService.token || '' });
+    let options = { headers: headers };
+
+    return this.http.get<any>(`${environment.endPoint}/company`, options)
+  }
 }

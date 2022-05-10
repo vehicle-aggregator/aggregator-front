@@ -1,5 +1,43 @@
 <div style="width: 70vw;" class="mt-4">
   <a class="h3" style="color: #808080">{{getTranslate('Companies')}}</a>
 
-  <div class="white-block mt-4"></div>
+  <div class="white-block mt-4">
+      <div style="height: 50vh; overflow: auto">
+        <table class="ll-table stretch mb-3">
+          <thead>
+          <tr>
+            <th>Company name</th>
+            <th>Owner name</th>
+            <th>Owner email</th>
+            <th>Moderation</th>
+            <th>Date of registration</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let company of companies">
+            <td>{{company.name}}</td>
+            <td>{{company.businessUser.last_name}} {{company.businessUser.name}}</td>
+            <td>{{company.businessUser.email}}</td>
+            <td>{{company.moderated ? 'Moderated' : 'Not moderated'}}</td>
+            <td>{{company.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</td>
+            <td class="d-flex align-items-center">
+              <mat-icon *ngIf="company.blocked" class="delete mr-2">block</mat-icon>
+              <mat-icon *ngIf="!company.blocked" class="success mr-2">task_alt</mat-icon>
+              {{ company.blocked ? 'Blocked' : 'Active' }}
+            </td>
+            <td width="30">
+              <button *ngIf="!company.blocked" class="ll-button danger stretch" (click)="showBlockModal(company)">Block</button>
+              <button *ngIf="company.blocked" class="ll-button outline stretch" (click)="showUnblockModal()">Unblock</button>
+            </td>
+          </tr>
+          <tr *ngIf="companies?.length === 0" style="cursor: default">
+            <td colspan="7">No companies found</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 </div>
+
+<ngx-spinner bdColor="" size="medium" color="#988aac" type="ball-beat"></ngx-spinner>
