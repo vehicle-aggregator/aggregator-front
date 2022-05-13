@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BusPlace} from "../../../shared/models/vehicle.model";
-import {especiallySmall} from "../../../shared/resources/bus";
 
 @Component({
   selector: 'app-bus',

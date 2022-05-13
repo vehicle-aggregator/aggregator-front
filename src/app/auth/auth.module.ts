@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateAccountComponent } from './register/create-account/create-account.component';
 import { InviteTokenComponent } from './register/invite-token/invite-token.component';
 import { CreateCompanyComponent } from './register/create-company/create-company.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CreateCompanyComponent } from './register/create-company/create-company
     CreateAccountComponent,
     InviteTokenComponent,
     CreateCompanyComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     AuthRoutingModule,
