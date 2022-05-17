@@ -20,8 +20,8 @@ export class VehicleModel {
 }
 
 export class BusPlace {
-  BusColumn: number;
-  BusRaw: number;
-  PlaceNum: number;
-  Busy: boolean;
+  column: number;
+  raw: number;
+  number?: number;
+  show: boolean;
 }

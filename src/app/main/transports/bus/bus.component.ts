@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {BusPlace} from "../../../shared/models/vehicle.model";
 
 @Component({
@@ -19,19 +19,14 @@ export class BusComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.maxColumn = Math.max.apply(null, this.busPlaces.map(item => item.BusColumn))
-    this.maxRaw = Math.max.apply(null, this.busPlaces.map(item => item.BusRaw))
+    this.maxColumn = Math.max.apply(null, this.busPlaces.map(item => item.column))
+    this.maxRaw = Math.max.apply(null, this.busPlaces.map(item => item.raw))
 
     this.columns = new Array(this.maxColumn).fill(1).map((item, index) => index + 1)
     this.raws = new Array(this.maxRaw).fill(1).map((item, index) => index + 1)
   }
 
   getBus(column: number, raw: number) {
-    return this.busPlaces.find(place => place.BusRaw === raw && place.BusColumn === column)
-  }
-
-  enter(column: number, raw: number) {
-    const placesLength = this.busPlaces.filter(place => place.BusColumn === column).length
-    return placesLength % 2 === 0 && placesLength / 2 === raw
+    return this.busPlaces.find(place => place.raw === raw && place.column === column)
   }
 }

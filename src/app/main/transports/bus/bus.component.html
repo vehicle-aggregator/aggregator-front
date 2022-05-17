@@ -1,11 +1,8 @@
-<div *ngFor="let raw of raws" class="d-flex flex-row">
-  <div *ngFor="let column of columns" class="d-flex flex-column">
-    <button *ngIf="getBus(column, raw)" [disabled]="getBus(column, raw)?.Busy" class="ll-button fill place m-1" style="width: 50px">
-      {{ getBus(column, raw)?.PlaceNum }}
+<div *ngFor="let column of columns" class="d-flex flex-row">
+  <div *ngFor="let raw of raws" class="d-flex flex-column">
+    <button *ngIf="getBus(column, raw)" style="height: 40px; width: 48px" [class.empty]="!getBus(column, raw)?.show" class="ll-button fill place m-1">
+      {{ getBus(column, raw)?.number }}
     </button>
-    <button *ngIf="!getBus(column, raw)" disabled="true" class="ll-button fill place m-1" style="width: 50px; background-color: white"></button>
-
-    <div *ngIf="enter(column, raw)" style="height: 30px"></div>
   </div>
 </div>
 

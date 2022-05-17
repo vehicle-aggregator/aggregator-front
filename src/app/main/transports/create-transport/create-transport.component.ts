@@ -4,7 +4,7 @@ import { VehicleService } from "../../../shared/services/vehicle.service";
 import { BsModalRef } from "ngx-bootstrap/modal";
 import { HttpErrorResponse } from "@angular/common/http";
 import {FormComponent} from "../../../shared/form/form.component";
-import { NumberValidator, NumberPlate } from 'src/app/shared/validators/validators';
+import { NumberPlate } from 'src/app/shared/validators/validators';
 import {TranslateService} from "@ngx-translate/core";
 import {BusPlace} from "../../../shared/models/vehicle.model";
 import {big, especiallyBig, especiallySmall, middle, small} from "../../../shared/resources/bus";
@@ -40,19 +40,23 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
     this.vehicleService.getVehicleType().subscribe(data => this.vehicleTypes = data)
   }
 
-  submit() {
+  async submit() {
     if (!this.checkForm()) return;
 
     this.spinner.show()
 
-    this.vehicleService.createVehicle({ ...this.form.value, passengerCount: this.bus.length, companyID: 1 }).subscribe(
-      data => {
-        this.isVehicleCreated.emit(data)
-        this.bsModalRef.hide()
-      },
-      error => this.handleError(error),
-      () => this.spinner.hide()
-    )
+    try {
+      const newVehicle = await this.vehicleService.createVehicle({ ...this.form.value, passengerCount: this.bus.filter(place => place.show).length, companyID: 1 }).toPromise()
+      const places = await this.vehicleService.putPlaces({ bus_id: newVehicle.ID, places: this.bus }).toPromise()
+
+      this.isVehicleCreated.emit(newVehicle)
+      this.spinner.hide()
+      this.bsModalRef.hide()
+    } catch (error) {
+      // @ts-ignore
+      this.handleError(error)
+      this.bsModalRef.hide()
+    }
   }
 
   handleError(res: HttpErrorResponse) {

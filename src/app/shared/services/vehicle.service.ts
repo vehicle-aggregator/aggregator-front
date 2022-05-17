@@ -47,11 +47,11 @@ export class VehicleService {
     return this.http.post<any>(`${environment.endPoint}/vehicle/create`, formDataTransformation(vehicle), options)
   }
 
-  putPlaces(places: any): Observable<any> {
+  putPlaces(busPlaces: { bus_id: number, places: any[] }): Observable<any> {
     let headers = new HttpHeaders({
       'Token': this.authService.token || '' });
     let options = { headers: headers };
 
-    return this.http.post<any>(`${environment.endPoint}/vehicle/put_places`, places, options)
+    return this.http.post<any>(`${environment.endPoint}/vehicle/put_places`, busPlaces, options)
   }
 }
