@@ -16,7 +16,11 @@ export class CompanyService {
   ) { }
 
   createCompany(company: Company): Observable<FullCompanyModel> {
-    return this.http.post<FullCompanyModel>(`${environment.endPoint}/company/create`,  company);
+    let headers = new HttpHeaders({
+      'Token': this.authService.token || '' });
+    let options = { headers: headers };
+
+    return this.http.post<FullCompanyModel>(`${environment.endPoint}/company/create`,  company, options);
   }
 
   createBusinessAccount(): Observable<any> {

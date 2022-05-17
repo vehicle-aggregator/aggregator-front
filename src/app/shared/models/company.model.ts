@@ -24,7 +24,7 @@ export class FullCompanyModel {
     {
       companyID: number;
       content: string;
-      createdAt: string;
+      CreatedAt: string;
       deletedAt: {
         time: string,
         valid: boolean
@@ -33,6 +33,7 @@ export class FullCompanyModel {
       statusId: number;
       typeId: number;
       updatedAt: string;
+      typeName: string;
     }
   ];
   id: number;

@@ -9,6 +9,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {BusPlace} from "../../../shared/models/vehicle.model";
 import {big, especiallyBig, especiallySmall, middle, small} from "../../../shared/resources/bus";
 import {NgxSpinnerService} from "ngx-spinner";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-transport',
@@ -34,6 +35,7 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
     private vehicleService: VehicleService,
     public bsModalRef: BsModalRef,
     private spinner: NgxSpinnerService,
+    private toastr: ToastrService
   ) { super() }
 
   ngOnInit(): void {
@@ -52,6 +54,8 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
       this.isVehicleCreated.emit(newVehicle)
       this.spinner.hide()
       this.bsModalRef.hide()
+
+      this.toastr.success('The transport was added successfully')
     } catch (error) {
       // @ts-ignore
       this.handleError(error)
@@ -62,7 +66,7 @@ export class CreateTransportComponent extends FormComponent implements OnInit {
   handleError(res: HttpErrorResponse) {
     if (res.status !== 400) return;
     const error = res.error;
-    //this.toastr.error(ERRORS[error.code]);
+    this.toastr.error(error);
   }
 
   getTranslate(kye: string) {

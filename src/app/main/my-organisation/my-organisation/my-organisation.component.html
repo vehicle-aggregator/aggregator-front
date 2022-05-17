@@ -46,10 +46,28 @@
         </div>
       </div>
 
-      <div class="white-block mt-4">
+      <div class="white-block mt-4 mb-4">
         <label class="h4 mb-4">Documents</label>
 
-        // TODO
+        <div *ngFor="let document of company.documents" class="mb-2">
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="ll-form-row">
+                <label class="ll-form-label">Document name</label>
+                <div class="ll-form-control">{{ document.typeName }}</div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="ll-form-row">
+                <label class="ll-form-label">Create date</label>
+                <div class="ll-form-control">{{ document.CreatedAt | date: 'yyyy-MM-dd HH:mm'  }}</div>
+              </div>
+            </div>
+          </div>
+
+          <img class="document" [alt]="document.typeName" [src]="document.content" (click)="openDocument(document.content)">
+        </div>
       </div>
     </div>
 

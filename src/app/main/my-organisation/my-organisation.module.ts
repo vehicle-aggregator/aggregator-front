@@ -5,10 +5,12 @@ import {SharedModule} from "../../shared/shared.module"
 import {MyOrganisationRoutingModule} from "./my-organisation-routing.module"
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {QRCodeModule} from "angular2-qrcode";
+import { ImageComponent } from './image/image.component';
 
 @NgModule({
   declarations: [
-    MyOrganisationComponent
+    MyOrganisationComponent,
+    ImageComponent
   ],
   imports: [
     SharedModule,
