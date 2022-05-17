@@ -46,13 +46,6 @@ export class LoginComponent extends FormComponent {
   }
 
   handleError(res: HttpErrorResponse) {
-    if (res.status !== 400) return;
-    const error = res.error;
-    if (error.code === 'INVALID_CREDENTIALS') {
-      this.control('email')?.setErrors({ invalid: true });
-      this.control('password')?.setErrors({ invalid: true });
-      // return;
-    }
-    //this.toastr.error(ERRORS[error.code]);
+    this.toastr.error('Please check your login and password');
   }
 }
