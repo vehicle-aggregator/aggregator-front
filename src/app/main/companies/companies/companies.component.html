@@ -12,11 +12,10 @@
             <th>Moderation</th>
             <th>Date of registration</th>
             <th>Status</th>
-            <th></th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let company of companies">
+          <tr *ngFor="let company of companies" [routerLink]="'/companies/' + company.ID" style="cursor: pointer">
             <td>{{company.name}}</td>
             <td>{{company.businessUser.last_name}} {{company.businessUser.name}}</td>
             <td>{{company.businessUser.email}}</td>
@@ -26,10 +25,6 @@
               <mat-icon *ngIf="company.blocked" class="delete mr-2">block</mat-icon>
               <mat-icon *ngIf="!company.blocked" class="success mr-2">task_alt</mat-icon>
               {{ company.blocked ? 'Blocked' : 'Active' }}
-            </td>
-            <td width="30">
-              <button *ngIf="!company.blocked" class="ll-button danger stretch" (click)="showBlockModal(company)">Block</button>
-              <button *ngIf="company.blocked" class="ll-button outline stretch" (click)="showUnblockModal()">Unblock</button>
             </td>
           </tr>
           <tr *ngIf="companies?.length === 0" style="cursor: default">

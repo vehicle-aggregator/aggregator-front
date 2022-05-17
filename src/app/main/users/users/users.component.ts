@@ -41,9 +41,8 @@ export class UsersComponent implements OnInit {
         this.toastr.success('The user was blocked successfully');
         modal.hide()
       } catch (error) {
-        console.error(error)
         // @ts-ignore
-        this.toastr.error(error.error)
+        this.toastr.error(error.message)
       }
     });
   }

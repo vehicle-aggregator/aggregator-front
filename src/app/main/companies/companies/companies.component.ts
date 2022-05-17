@@ -3,7 +3,6 @@ import {TranslateService} from "@ngx-translate/core";
 import {NgxSpinnerService} from "ngx-spinner";
 import {CompanyService} from "../../../shared/services/company.service";
 import {UsersService} from "../../../shared/services/users.service";
-import {FullCompanyModel} from "../../../shared/models/company.model";
 
 @Component({
   selector: 'app-companies',
@@ -39,14 +38,5 @@ export class CompaniesComponent implements OnInit {
     this.companies = companies.map((company: any) => ({ ...company, businessUser: users?.find(user => user.BusinessUser[0].ID === company.owner )}));
 
     this.spinner.hide();
-  }
-
-
-  showUnblockModal() {
-    // TODO
-  }
-
-  showBlockModal(company: FullCompanyModel) {
-    // TODO
   }
 }
