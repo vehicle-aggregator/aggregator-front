@@ -12,4 +12,16 @@ export class TripModel {
   TicketBought: number;
   TripStatus: string;
   VehiclePlaces: string;
+  CreatedAt: Date;
+  DeletedAt: Date;
+  Feedbacks: any[];
+  From: string;
+  PlacesTrip: any[];
+  RouteID: number;
+  StatusID: number;
+  To: string;
+  TripSchedule: number;
+  UpdatedAt: Date;
+  VehicleID: number;
+
 }

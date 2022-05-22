@@ -1,6 +1,11 @@
 <div *ngFor="let column of columns" class="d-flex flex-row">
   <div *ngFor="let raw of raws" class="d-flex flex-column">
-    <button *ngIf="getBus(column, raw)" style="height: 40px; width: 48px" [class.empty]="!getBus(column, raw)?.show" class="ll-button fill place m-1">
+    <button *ngIf="getBus(column, raw)"
+            style="height: 40px; width: 48px"
+            [class.empty]="!getBus(column, raw)?.show"
+            class="ll-button fill place m-1"
+            [disabled]="getBus(column, raw)?.busy"
+    >
       {{ getBus(column, raw)?.number }}
     </button>
   </div>

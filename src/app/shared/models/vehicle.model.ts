@@ -24,4 +24,5 @@ export class BusPlace {
   raw: number;
   number?: number;
   show: boolean;
+  busy?: boolean;
 }

@@ -70,13 +70,13 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let route of trips">
-        <td>{{ route.PlaceFrom }}</td>
-        <td>{{ route.PlaceTo }}</td>
-        <td>{{ route.TicketBought }} / {{route.PassengerCount}}</td>
-        <td>{{ route.Price }} ₽</td>
-        <td>{{ route.StartAt | date: 'yyyy-MM-dd HH:mm' }}</td>
-        <td>{{ route.EndAt | date: 'yyyy-MM-dd HH:mm' }}</td>
+      <tr *ngFor="let trip of trips" style="cursor: pointer" [routerLink]="'/trips/' + trip.ID">
+        <td>{{ trip.PlaceFrom }}</td>
+        <td>{{ trip.PlaceTo }}</td>
+        <td>{{ trip.TicketBought }} / {{trip.PassengerCount}}</td>
+        <td>{{ trip.Price }} ₽</td>
+        <td>{{ trip.StartAt | date: 'yyyy-MM-dd HH:mm' }}</td>
+        <td>{{ trip.EndAt | date: 'yyyy-MM-dd HH:mm' }}</td>
         <td width="30"><mat-icon class="edit">edit</mat-icon></td>
         <td width="30"><mat-icon class="delete">delete</mat-icon></td>
       </tr>

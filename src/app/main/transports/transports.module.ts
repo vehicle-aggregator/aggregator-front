@@ -6,14 +6,17 @@ import { CreateTransportComponent } from './create-transport/create-transport.co
 import { BusComponent } from './bus/bus.component';
 
 @NgModule({
-  declarations: [
-    TransportsComponent,
-    CreateTransportComponent,
-    BusComponent
-  ],
-  imports: [
-    SharedModule,
-    TransportsRoutingModule
-  ]
+    declarations: [
+        TransportsComponent,
+        CreateTransportComponent,
+        BusComponent
+    ],
+    exports: [
+        BusComponent
+    ],
+    imports: [
+        SharedModule,
+        TransportsRoutingModule
+    ]
 })
 export class TransportsModule { }

@@ -1414,35 +1414,6 @@ export const especiallyBig = [
   },
   {
     column: 1,
-    raw: 12,
-    number: 45,
-    show: true
-  },
-  {
-    column: 2,
-    raw: 12,
-    number: 46,
-    show: true
-  },
-  {
-    column: 3,
-    raw: 12,
-    show: false
-  },
-  {
-    column: 4,
-    raw: 12,
-    number: 47,
-    show: true
-  },
-  {
-    column: 5,
-    raw: 12,
-    number: 48,
-    show: true
-  },
-  {
-    column: 1,
     raw: 13,
     number: 49,
     show: true
@@ -1467,7 +1438,7 @@ export const especiallyBig = [
   {
     column: 5,
     raw: 13,
-    number: 52,
+    number:52,
     show: true
   },
   {
@@ -1485,19 +1456,48 @@ export const especiallyBig = [
   {
     column: 3,
     raw: 14,
-    number: 55,
-    show: true
+    show: false
   },
   {
     column: 4,
     raw: 14,
-    number: 56,
+    number: 55,
     show: true
   },
   {
     column: 5,
     raw: 14,
+    number: 56,
+    show: true
+  },
+  {
+    column: 1,
+    raw: 15,
     number: 57,
+    show: true
+  },
+  {
+    column: 2,
+    raw: 15,
+    number: 58,
+    show: true
+  },
+  {
+    column: 3,
+    raw: 15,
+    number: 59,
+    show: true
+  },
+  {
+    column: 4,
+    raw: 15,
+    number: 60,
+    show: true
+  },
+  {
+    column: 5,
+    raw: 15,
+    number: 61,
     show: true
   }
 ]

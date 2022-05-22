@@ -47,4 +47,12 @@ export class TripsService {
 
     return this.http.get<any>(`${environment.endPoint}/trip/find?from=${from}&to=${to}&date=${date}`, options)
   }
+
+  getFeedback(id: number): Observable<any> {
+    let headers = new HttpHeaders({
+      'Token': this.authService.token || '' });
+    let options = { headers: headers };
+
+    return this.http.get<any>(`${environment.endPoint}/trip/${id}/feedback`, options)
+  }
 }

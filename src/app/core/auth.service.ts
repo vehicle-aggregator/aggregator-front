@@ -34,6 +34,32 @@ export class AuthService {
     );
   }
 
+  sendEmail(email: string) {
+    const options = {
+      observe: "response" as 'body',
+    };
+
+    return this.http.post<string>(`${environment.endPoint}/auth/forget_password`,  formDataTransformation({ email, stage: 1 }), options).pipe(
+      tap(this.setUserFromResponse.bind(this))
+    );
+  }
+
+  sendCode(code: string, email: string) {
+    let headers = new HttpHeaders({
+      'auth': this.token || '' });
+    let options = { headers: headers };
+
+    return this.http.post(`${environment.endPoint}/auth/forget_password`,  formDataTransformation({ email, code, stage: 2 }), options)
+  }
+
+  sendPassword(email: string, password: string) {
+    let headers = new HttpHeaders({
+      'auth': this.token || '' });
+    let options = { headers: headers };
+
+    return this.http.post(`${environment.endPoint}/auth/forget_password`,  formDataTransformation({ email, password, stage: 3 }), options)
+  }
+
   logout(): void {
     sessionStorage.clear();
   }
@@ -48,9 +74,9 @@ export class AuthService {
   }
 
   setUserFromResponse(response: any) {
-    const userFromToken = this.helper.decodeToken(response.headers.get('token'))
+    const userFromToken = this.helper.decodeToken(response.headers.get('token') || response.headers.get('auth'))
     sessionStorage.setItem('firstName', userFromToken.Name);
-    sessionStorage.setItem('token', response.headers.get('token'));
+    sessionStorage.setItem('token', response.headers.get('token') || response.headers.get('auth'));
     sessionStorage.setItem('lastName', userFromToken.LastName);
     sessionStorage.setItem('email', userFromToken.Email);
     sessionStorage.setItem('_id', userFromToken.ID);
