@@ -1,0 +1,108 @@
+<div style="width: 70vw;" class="mt-4" *ngIf="trip">
+  <div class="d-flex justify-content-between align-items-center">
+    <a class="h3" style="color: #808080; display: flex; align-items: center">
+      {{ trip.From }}
+      <mat-icon class="m-2">trending_flat</mat-icon>
+      {{ trip.To }}
+    </a>
+
+    <div class="d-flex">
+      <button type="submit" class="ll-button outline mr-2" (click)="changeStatus()">Change trip status</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="white-block mt-4">
+        <label class="h4 mb-4">Passengers</label>
+
+        <div *ngIf="bus.length > 0" class="d-flex justify-content-center overflow-auto">
+          <app-bus class="overflow-auto" [busPlaces]="bus"></app-bus>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label class="h4 mb-4">Feedback of the trip</label>
+
+        <div *ngFor="let comment of feedback" class="white-block mb-2 d-flex flex-column">
+          <div class="d-flex justify-content-between">
+            <span class="font-weight-bold">{{ comment.Title }}</span>
+
+            <div>
+              <mat-icon *ngFor="let fill of [1,2,3,4,5]" class="star" [class.active]="fill < comment.Mark">star</mat-icon>
+            </div>
+          </div>
+
+          <span>{{ comment.Content }}</span>
+
+          <div class="d-flex justify-content-end" style="color: grey">
+            <span>{{ comment.CreatedAt | date: 'yyyy-MM-dd HH:mm' }}</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mt-3 mt-md-0">
+      <div class="white-block mt-4">
+        <label class="h4 mb-4">Trip information</label>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="ll-form-row">
+              <label class="ll-form-label" style="display: flex; align-items: center">Average rating</label>
+              <div class="ll-form-control" style="display: flex; align-items: center">
+                <mat-icon *ngFor="let fill of [1,2,3,4,5]" class="star" [class.active]="fill < averageRating">star</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="ll-form-row">
+              <label class="ll-form-label" style="display: flex; align-items: center">Place from <mat-icon>arrow_right_alt</mat-icon> Place to</label>
+              <div class="ll-form-control" style="display: flex; align-items: center">{{ trip.From }} <mat-icon>arrow_right_alt</mat-icon> {{ trip.To }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Ticket bought</label>
+              <div class="ll-form-control">{{ trip.TicketBought }} / {{busPlaces}}</div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Price</label>
+              <div class="ll-form-control">{{ trip.Price }} ₽</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="ll-form-row">
+              <label class="ll-form-label">Start at</label>
+              <div class="ll-form-control">{{ trip.StartAt | date: 'yyyy-MM-dd HH:mm' }}</div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="ll-form-row">
+              <label class="ll-form-label">End at</label>
+              <div class="ll-form-control">{{ trip.EndAt | date: 'yyyy-MM-dd HH:mm' }}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ngx-spinner bdColor="" size="medium" color="#988aac" type="ball-beat"></ngx-spinner>

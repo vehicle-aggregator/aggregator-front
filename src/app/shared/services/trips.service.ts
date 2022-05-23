@@ -55,4 +55,12 @@ export class TripsService {
 
     return this.http.get<any>(`${environment.endPoint}/trip/${id}/feedback`, options)
   }
+
+  changeStatus(id: number, status: string): Observable<any> {
+    let headers = new HttpHeaders({
+      'Token': this.authService.token || '' });
+    let options = { headers: headers };
+
+    return this.http.post<any>(`${environment.endPoint}/trip/${id}/change-status`, formDataTransformation({status}), options)
+  }
 }
