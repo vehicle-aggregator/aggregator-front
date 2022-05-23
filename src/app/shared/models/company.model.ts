@@ -37,6 +37,7 @@ export class FullCompanyModel {
     }
   ];
   id: number;
+  ID: number;
   inviteCode: string;
   moderated: boolean;
   name: string;

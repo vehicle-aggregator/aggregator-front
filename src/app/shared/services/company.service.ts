@@ -66,4 +66,20 @@ export class CompanyService {
 
     return this.http.get<any>(`${environment.endPoint}/company`, options)
   }
+
+  confirmModeration(id: number): Observable<FullCompanyModel> {
+    let headers = new HttpHeaders({
+      'Token': this.authService.token || '' });
+    let options = { headers: headers };
+
+    return this.http.post<any>(`${environment.endPoint}/moder/confirm`, formDataTransformation({ cid: id }), options)
+  }
+
+  banCompany(id: number): Observable<FullCompanyModel> {
+    let headers = new HttpHeaders({
+      'Token': this.authService.token || '' });
+    let options = { headers: headers };
+
+    return this.http.get<any>(`${environment.endPoint}/company/ban/${id}`,  options)
+  }
 }

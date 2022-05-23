@@ -103,6 +103,6 @@ export class AuthService {
 
   get role(): 'admin' | 'user' {
     // TODO change logic
-    return sessionStorage.getItem('email') === 'admin@fakemail.xxx' ?  'admin' : 'user';
+    return sessionStorage.getItem('email') === 'moder@gmail.com' ?  'admin' : 'user';
   }
 }

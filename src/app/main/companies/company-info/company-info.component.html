@@ -5,7 +5,7 @@
     <div class="d-flex">
       <button *ngIf="!company.blocked" class="ll-button danger stretch" (click)="showBlockModal(company)">Block</button>
       <button *ngIf="company.blocked" class="ll-button outline stretch">Unblock</button>
-      <button *ngIf="!company.moderated" class="ll-button outline stretch ml-2">Approve</button>
+      <button *ngIf="!company.moderated" class="ll-button outline stretch ml-2" (click)="approve()">Approve</button>
     </div>
   </div>
 

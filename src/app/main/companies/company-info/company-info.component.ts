@@ -58,16 +58,32 @@ export class CompanyInfoComponent implements OnInit {
 
   showBlockModal(company: FullCompanyModel) {
     const modal = this.modalService.show(CompanyBlockComponent, { initialState: { companyName: company.name }, class: 'modal-540' });
-    // modal.content?.isUserBlocked.subscribe(async () => {
-    //   try {
-    //     await this.usersService.banBusinessUsers(user.BusinessUser[0].ID).toPromise()
-    //     this.loadUser();
-    //     this.toastr.success('The user was blocked successfully');
-    //     modal.hide()
-    //   } catch (error) {
-    //     // @ts-ignore
-    //     this.toastr.error(error.message)
-    //   }
-    // });
+    modal.content?.isCompanyBlocked.subscribe(async () => {
+      try {
+        this.spinner.show()
+        const companyInfo = await this.companyService.banCompany(company.ID).toPromise()
+        this.loadCompany(company.ID);
+        this.toastr.success('The company was blocked successfully');
+        modal.hide()
+      } catch (error) {
+        // @ts-ignore
+        this.toastr.error(error.message)
+      }
+    });
+  }
+
+  async approve() {
+    this.spinner.show()
+    try {
+      // @ts-ignore
+      await this.companyService.confirmModeration(this.company.ID).toPromise()
+      this.company.moderated = true;
+      this.toastr.success('The company was moderated successfully');
+    } catch (e) {
+      // @ts-ignore
+      this.toastr.error(error.message)
+    }
+
+    this.spinner.hide()
   }
 }
