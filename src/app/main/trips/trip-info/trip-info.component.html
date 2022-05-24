@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="mt-4">
+      <div class="mt-4" *ngIf="feedback.length > 0">
         <label class="h4 mb-4">Feedback of the trip</label>
 
         <div *ngFor="let comment of feedback" class="white-block mb-2 d-flex flex-column">

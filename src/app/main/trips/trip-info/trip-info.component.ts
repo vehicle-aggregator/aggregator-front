@@ -71,6 +71,8 @@ export class TripInfoComponent implements OnInit {
   }
 
   get averageRating() {
-    return this.feedback.map((item: any) => item?.Mark).reduce((a: any ,b: any) => a + b) / this.feedback.length
+    return this.feedback.length > 0 ?
+      this.feedback.map((item: any) => item?.Mark).reduce((a: any ,b: any) => a + b) / this.feedback.length
+      : 0
   }
 }
